@@ -1,15 +1,21 @@
-import Link from "next/link"
-import { BookOpen, Heart, Users } from "lucide-react"
+import Link from "next/link";
+import { BookOpen, Heart, Users } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-import { SiteHeader } from "@/components/header"
-import { SiteFooter } from "@/components/footer"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { SiteHeader } from "@/components/header";
+import { SiteFooter } from "@/components/footer";
 
 export default function AboutPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">
@@ -19,13 +25,14 @@ export default function AboutPage() {
                 About Our Church
               </h1>
               <p className="max-w-[600px] text-gray-500 md:text-xl">
-                Grace Church has been serving our community since 1925. We are committed to sharing the Gospel and
-                living out our faith through worship, fellowship, and service.
+                The Church of the Great Redeemer has been serving our community
+                since 2024. We are committed to sharing the Gospel and living
+                out our faith through worship, fellowship, and service.
               </p>
             </div>
             <div className="mx-auto overflow-hidden rounded-xl">
               <img
-                src="/placeholder.svg?height=550&width=700"
+                src="../assets/about/about1.jpg"
                 alt="Historic church building"
                 width={700}
                 height={550}
@@ -38,7 +45,9 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Mission & Values</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Our Mission & Values
+                </h2>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
                   Guided by Scripture and traditional Christian principles.
                 </p>
@@ -54,7 +63,8 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <CardDescription>
-                      We believe the Bible is the inspired Word of God and the foundation for all we do and believe.
+                      We believe the Bible is the inspired Word of God and the
+                      foundation for all we do and believe.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -65,8 +75,8 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <CardDescription>
-                      We are called to love God with all our heart, soul, mind, and strength, and to love our neighbors
-                      as ourselves.
+                      We are called to love God with all our heart, soul, mind,
+                      and strength, and to love our neighbors as ourselves.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -77,7 +87,8 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <CardDescription>
-                      We value fellowship and community, supporting one another in our spiritual journey.
+                      We value fellowship and community, supporting one another
+                      in our spiritual journey.
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -89,57 +100,66 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2">
               <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Our History</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                  Our History
+                </h2>
                 <p className="text-gray-500">
-                  Grace Church was founded in 1925 by a small group of believers committed to establishing a place of
-                  worship rooted in traditional Christian values. Over the decades, our congregation has grown, but our
-                  commitment to Scripture and community has remained steadfast.
+                  The Church of the Great Redeemer (CGR) originated from a group
+                  of Christians who, following the 2024 UMC General Conference,
+                  made the decision to leave the United Methodist Church due to
+                  differences in their faith and mission. CGR seeks to worship
+                  God in spirit and truth (John 4:24), abide by His Word, and
+                  grow in love and holiness. As a faithful remnant of the
+                  Christian community, CGR remains committed to upholding the
+                  Word of God as our standard of living, rather than following
+                  cultural trends.
                 </p>
                 <p className="text-gray-500">
-                  Through world wars, economic challenges, and societal changes, Grace Church has been a beacon of hope
-                  and stability in our community. We've expanded our facilities, developed various ministries, and
-                  continued to adapt while maintaining our core beliefs and traditions.
+                  CGR stands firm in its commitment to cling to biblical
+                  scripture and be willing to make the necessary sacrifices to
+                  stand true to Jesus Christ. We believe it is our duty to
+                  proclaim the Gospel of Jesus Christ by standing on the Word
+                  and living out our faith through love, unity, and service.
                 </p>
                 <p className="text-gray-500">
-                  Today, we honor our rich heritage while embracing the future, seeking to share the timeless message of
-                  Christ's love in ways that speak to contemporary hearts and minds.
+                  Our worship services are traditional and engaging, blending
+                  hymns and liturgies that connect us with the saints of old.
+                  Each Sunday, we gather together in reverence for God to hear
+                  Pastor Dan lead the preaching of the Word, which is our
+                  primary focus during worship. Our goal is to use worship as an
+                  opportunity for edification, increasing knowledge and love of
+                  God.
                 </p>
               </div>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="overflow-hidden rounded-xl">
-                  <img
-                    src="/placeholder.svg?height=300&width=400"
-                    alt="Church in the 1920s"
-                    width={400}
-                    height={300}
-                    className="aspect-[4/3] object-cover"
-                  />
+              <div className="grid gap-4">
+                <div className="grid gap-4 md:grid-cols-2 md:gap-x-4">
+                  <div className="overflow-hidden rounded-xl">
+                    <img
+                      src="../assets/about/about2.jpg"
+                      alt="Church in the 1920s"
+                      width={400}
+                      height={300}
+                      className="w-full aspect-[4/3] object-cover"
+                    />
+                  </div>
+                  <div className="overflow-hidden rounded-xl">
+                    <img
+                      src="../assets/about/about3.jpg"
+                      alt="Church in the 1950s"
+                      width={400}
+                      height={300}
+                      className="w-full aspect-[4/3] object-cover"
+                    />
+                  </div>
                 </div>
+
                 <div className="overflow-hidden rounded-xl">
                   <img
-                    src="/placeholder.svg?height=300&width=400"
-                    alt="Church in the 1950s"
-                    width={400}
-                    height={300}
-                    className="aspect-[4/3] object-cover"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-xl">
-                  <img
-                    src="/placeholder.svg?height=300&width=400"
+                    src="../assets/about/about4.jpg"
                     alt="Church in the 1980s"
                     width={400}
                     height={300}
-                    className="aspect-[4/3] object-cover"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-xl">
-                  <img
-                    src="/placeholder.svg?height=300&width=400"
-                    alt="Church today"
-                    width={400}
-                    height={300}
-                    className="aspect-[4/3] object-cover"
+                    className="w-full aspect-[4/3] object-cover"
                   />
                 </div>
               </div>
@@ -150,7 +170,9 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Leadership</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Our Leadership
+                </h2>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
                   Meet the dedicated individuals who guide our church community.
                 </p>
@@ -207,6 +229,5 @@ export default function AboutPage() {
       </main>
       <SiteFooter />
     </div>
-  )
+  );
 }
-

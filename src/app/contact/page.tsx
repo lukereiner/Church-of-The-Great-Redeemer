@@ -127,19 +127,8 @@ export default function ContactPage() {
                         <MapPin className="mt-1 h-5 w-5 text-slate-700" />
                         <div>
                           <h3 className="font-medium">Address</h3>
-                          <p className="text-sm text-gray-500">123 Faith Street</p>
-                          <p className="text-sm text-gray-500">Grace Town, GT 12345</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <Phone className="mt-1 h-5 w-5 text-slate-700" />
-                        <div>
-                          <h3 className="font-medium">Phone</h3>
-                          <p className="text-sm text-gray-500">(555) 123-4567</p>
+                          <p className="text-sm text-gray-500">464 High St.</p>
+                          <p className="text-sm text-gray-500">Weatherly, PA 18255</p>
                         </div>
                       </div>
                     </CardContent>
@@ -150,7 +139,7 @@ export default function ContactPage() {
                         <Mail className="mt-1 h-5 w-5 text-slate-700" />
                         <div>
                           <h3 className="font-medium">Email</h3>
-                          <p className="text-sm text-gray-500">info@gracechurch.org</p>
+                          <p className="text-sm text-gray-500">weatherlycgr@protonmail.com</p>
                         </div>
                       </div>
                     </CardContent>
@@ -160,10 +149,8 @@ export default function ContactPage() {
                       <div className="flex items-start space-x-4">
                         <Clock className="mt-1 h-5 w-5 text-slate-700" />
                         <div>
-                          <h3 className="font-medium">Office Hours</h3>
-                          <p className="text-sm text-gray-500">Monday-Friday: 9:00 AM - 4:00 PM</p>
-                          <p className="text-sm text-gray-500">Saturday: Closed</p>
-                          <p className="text-sm text-gray-500">Sunday: 9:00 AM - 1:00 PM</p>
+                          <h3 className="font-medium">Service</h3>
+                          <p className="text-sm text-gray-500">Sunday: 9:00 AM</p>
                         </div>
                       </div>
                     </CardContent>
@@ -171,17 +158,6 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section className="w-full">
-          <div className="h-[400px] w-full overflow-hidden">
-            <img
-              src="/placeholder.svg?height=400&width=1200"
-              alt="Map of church location"
-              width={1200}
-              height={400}
-              className="h-full w-full object-cover"
-            />
           </div>
         </section>
       </main>

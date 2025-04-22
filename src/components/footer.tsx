@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Cross, Facebook, Instagram, Youtube } from "lucide-react"
+import { Cross, Facebook, Youtube } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"

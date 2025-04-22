@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Cross, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -18,25 +18,22 @@ export function SiteHeader() {
           <span className="hidden font-serif text-xl font-bold sm:inline-block text-[#d1cdba]">Church of the Great Redeemer</span>
         </Link>
         <nav className="hidden flex-1 items-center justify-center space-x-6 md:flex">
-          <Link href="/about" className="text-sm font-medium text-slate-700 transition-colors hover:text-slate-900">
+          <Link href="/about" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
             About
           </Link>
-          <Link href="/worship" className="text-sm font-medium text-slate-700 transition-colors hover:text-slate-900">
-            Worship
+          <Link href="/beliefs" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+            Beliefs
           </Link>
           <Link
             href="/groups"
-            className="text-sm font-medium text-slate-700 transition-colors hover:text-slate-900"
+            className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]"
           >
             Groups
           </Link>
-          <Link href="/events" className="text-sm font-medium text-slate-700 transition-colors hover:text-slate-900">
+          <Link href="/events" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
             Events
           </Link>
-          <Link href="/sermons" className="text-sm font-medium text-slate-700 transition-colors hover:text-slate-900">
-            Sermons
-          </Link>
-          <Link href="/contact" className="text-sm font-medium text-slate-700 transition-colors hover:text-slate-900">
+          <Link href="/contact" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
             Contact
           </Link>
         </nav>
@@ -61,18 +58,18 @@ export function SiteHeader() {
                   About
                 </Link>
                 <Link
-                  href="/worship"
+                  href="/beliefs"
                   className="text-lg font-medium text-slate-700 transition-colors hover:text-slate-900"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Worship
+                  Beliefs
                 </Link>
                 <Link
-                  href="/ministries"
+                  href="/groups"
                   className="text-lg font-medium text-slate-700 transition-colors hover:text-slate-900"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Ministries
+                  Groups
                 </Link>
                 <Link
                   href="/events"
@@ -80,13 +77,6 @@ export function SiteHeader() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Events
-                </Link>
-                <Link
-                  href="/sermons"
-                  className="text-lg font-medium text-slate-700 transition-colors hover:text-slate-900"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Sermons
                 </Link>
                 <Link
                   href="/contact"
@@ -97,10 +87,7 @@ export function SiteHeader() {
                 </Link>
                 <div className="flex flex-col gap-2">
                   <Button variant="outline" asChild onClick={() => setIsMenuOpen(false)}>
-                    <Link href="/donate">Donate</Link>
-                  </Button>
-                  <Button asChild onClick={() => setIsMenuOpen(false)}>
-                    <Link href="/live">Watch Live</Link>
+                  <a href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2" target="_blank">Donate</a>
                   </Button>
                 </div>
               </div>

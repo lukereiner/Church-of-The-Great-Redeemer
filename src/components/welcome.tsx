@@ -24,7 +24,7 @@ export function WelcomeSection() {
         </div>
         <div className="mx-auto overflow-hidden rounded-xl">
           <img
-            src="../assets/home/banner.png"
+            src="../assets/home/cross2.jpg"
             alt="Church sanctuary with stained glass windows"
             width={700}
             height={550}
