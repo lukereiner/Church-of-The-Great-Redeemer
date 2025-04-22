@@ -14,31 +14,31 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-[#022438]">
       <div className="container flex h-16 items-center px-4 sm:px-6">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <img className="h-6 w-6" src="../assets/home/avatar.png"/>
+          <img className="h-9 w-9" src="../assets/home/avatar.png"/>
           <span className="hidden font-serif text-xl font-bold sm:inline-block text-[#d1cdba]">Church of the Great Redeemer</span>
         </Link>
         <nav className="hidden flex-1 items-center justify-center space-x-6 md:flex">
-          <Link href="/about" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link href="/about" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
             About
           </Link>
-          <Link href="/beliefs" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link href="/beliefs" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
             Beliefs
           </Link>
           <Link
             href="/groups"
-            className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]"
+            className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]"
           >
             Groups
           </Link>
-          <Link href="/events" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link href="/events" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
             Events
           </Link>
-          <Link href="/contact" className="text-sm font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link href="/contact" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
             Contact
           </Link>
         </nav>
         <div className="ml-auto flex items-center space-x-2">
-          <Button variant="outline" size="sm" asChild className="hidden md:flex">
+          <Button variant="outline" size="sm" asChild className="hidden md:flex sm:ml-6">
             <a href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2" target="_blank">Donate</a>
           </Button>
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>

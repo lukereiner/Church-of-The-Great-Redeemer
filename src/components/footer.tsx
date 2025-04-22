@@ -11,7 +11,8 @@ export function SiteFooter() {
       <div className="container grid gap-8 px-4 py-10 md:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div className="flex flex-col gap-2">
           <Link href="/" className="flex items-center space-x-2">
-            <Cross className="h-6 w-6 text-slate-700" />
+            
+            <img className="h-9 w-9" src="../assets/footer-avatar.png" alt="" />
             <span className="font-serif text-xl font-bold">Church of the Great Redeemer</span>
           </Link>
           <p className="text-sm text-gray-500">
@@ -24,17 +25,14 @@ export function SiteFooter() {
             <Link href="/about" className="text-sm text-gray-500 hover:underline">
               About Us
             </Link>
-            <Link href="/worship" className="text-sm text-gray-500 hover:underline">
-              Worship Services
+            <Link href="/beliefs" className="text-sm text-gray-500 hover:underline">
+              Beliefs
             </Link>
-            <Link href="/ministries" className="text-sm text-gray-500 hover:underline">
-              Ministries
+            <Link href="/groups" className="text-sm text-gray-500 hover:underline">
+              Groups
             </Link>
             <Link href="/events" className="text-sm text-gray-500 hover:underline">
               Events
-            </Link>
-            <Link href="/sermons" className="text-sm text-gray-500 hover:underline">
-              Sermons
             </Link>
           </nav>
         </div>
