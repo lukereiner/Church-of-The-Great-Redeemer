@@ -14,11 +14,8 @@ export function WelcomeSection() {
           Living and growing together in the Word
           </p>
           <div className="flex flex-col gap-2 min-[400px]:flex-row">
-            <Button asChild>
-              <Link href="/worship">Join Us for Worship</Link>
-            </Button>
             <Button variant="outline" asChild>
-              <Link href="/about">Learn More</Link>
+              <Link href="/about">About Us</Link>
             </Button>
           </div>
         </div>

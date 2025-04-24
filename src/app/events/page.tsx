@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import { Calendar as ReactCal, Clock, MapPin, Mail } from "lucide-react";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -12,6 +13,7 @@ const localizer = momentLocalizer(moment);
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
+  const [monthlyEvents, setMonthlyEvents] = useState([]);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -22,15 +24,29 @@ export default function EventsPage() {
           id: event.id,
           title: event.title,
           date: new Date(event.date),
+          description: event.description,
           allDay: false, // set to true if your event spans the whole day
         }));
-        setEvents(adjustedData);
+        adjustedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+        const currentDate = new Date();
+        const upcomingEvents = adjustedData.filter(
+          (event) => new Date(event.date) > currentDate
+        );
+        setEvents(upcomingEvents);
+
+        const currentMonth = moment().month();
+        const currentMonthEvents = adjustedData.filter(
+          (event) => moment(event.date).month() === currentMonth
+        );
+        setMonthlyEvents(currentMonthEvents);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
     }
     fetchEvents();
   }, []);
+
+  const currentMonthName = moment().format("MMMM");
 
   return (
     <div className="flex min-h-screen flex-col items-center">
@@ -69,15 +85,23 @@ export default function EventsPage() {
               />
               <div className="w-full mt-8">
                 <h2 className="text-2xl font-semibold mb-4">
-                  Event List for the Month
+                  Event List for {currentMonthName}
                 </h2>
                 <ul className="space-y-4">
-                  {events.map((event) => (
+                  {monthlyEvents.map((event) => (
                     <li key={event.id} className="text-left">
-                      <strong>{event.title}</strong>
+                      <div className="flex gap-1 items-center">
+                        <ReactCal className="w-5 h-6"></ReactCal>
+                        <strong>{event.title}</strong>
+                      </div>
+                      <div className="flex gap-1">
+                        <Clock className="w-5 h-6"></Clock>
                       <p>
                         {moment(event.date).format("MMMM Do, YYYY [at] HH:mm")}
                       </p>
+                      </div>
+
+                      <p>{event.description}</p>
                     </li>
                   ))}
                 </ul>

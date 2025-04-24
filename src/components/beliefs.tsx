@@ -4,17 +4,17 @@ import { Heart, Music, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
-export function MinistriesSection() {
+export function BeliefsSection() {
   const ministries = [
     {
-      title: "Children's Ministry",
+      title: "The Word",
       icon: <Heart className="h-10 w-10 text-slate-700" />,
       description:
         "Nurturing the spiritual growth of our youngest members through age-appropriate Bible lessons and activities.",
       link: "/ministries/children",
     },
     {
-      title: "Music Ministry",
+      title: "Holy Trinity",
       icon: <Music className="h-10 w-10 text-slate-700" />,
       description: "Enhancing our worship experience through traditional hymns and contemporary Christian music.",
       link: "/ministries/music",
@@ -47,17 +47,17 @@ export function MinistriesSection() {
                 <CardContent className="flex-1 text-center">
                   <CardDescription className="text-sm">{ministry.description}</CardDescription>
                 </CardContent>
-                <CardFooter className="flex justify-center pt-4">
+{/*                 <CardFooter className="flex justify-center pt-4">
                   <Button variant="outline" asChild>
                     <Link href={ministry.link}>Learn More</Link>
                   </Button>
-                </CardFooter>
+                </CardFooter> */}
               </Card>
             ))}
           </div>
           <div className="mt-6">
             <Button asChild>
-              <Link href="/ministries">View All Ministries</Link>
+              <Link href="/beliefs">Our Beliefs</Link>
             </Button>
           </div>
         </div>

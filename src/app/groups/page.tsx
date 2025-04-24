@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Users, BookOpen, Heart } from "lucide-react";
+import { Users, BookOpen, Heart, BookMarked, MessageCircle } from "lucide-react";
 
 import {
   Card,
@@ -15,22 +15,22 @@ import { SiteFooter } from "@/components/footer";
 export default function GroupsPage() {
   const groups = [
     {
-      icon: <Users className="h-10 w-10 text-slate-700" />,
-      title: "Bible Study Group",
-      description: "Deepen your understanding of the scriptures in a supportive community.",
-      meetingInfo: "Every Wednesday at 7 PM in the Fellowship Hall",
+      icon: <BookMarked className="h-10 w-10 text-slate-700" />,
+      title: "Book Study",
+      description: "Gain understanding of scripture through Christian literature.",
+      meetingInfo: "Every Wednesday at 10:30 AM",
     },
     {
-      icon: <Heart className="h-10 w-10 text-slate-700" />,
-      title: "Youth Group",
-      description: "Engage with peers through fun activities and meaningful conversations.",
-      meetingInfo: "Fridays at 6 PM in the Youth Room",
+      icon: <MessageCircle className="h-10 w-10 text-slate-700" />,
+      title: "Table Talk",
+      description: "Engage with peers in discussion about important and sensitive matters of our time.",
+      meetingInfo: "Every other Saturday at 10 AM",
     },
     {
       icon: <BookOpen className="h-10 w-10 text-slate-700" />,
-      title: "Women's Fellowship",
-      description: "Connect with other women in faith and friendship.",
-      meetingInfo: "First Saturday of each month at 10 AM in the Community Center",
+      title: "Bible Class",
+      description: "Deepen your understanding of the scriptures in a supportive community.",
+      meetingInfo: "Every Thursday at 5 PM",
     },
   ];
 

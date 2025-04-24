@@ -133,8 +133,8 @@ export default function AboutPage() {
                 <div className="grid gap-4 md:grid-cols-2 md:gap-x-4">
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src="../assets/about/about2.jpg"
-                      alt="Church in the 1920s"
+                      src="../assets/about/about3.jpg"
+                      alt="Church in a school gymnasium"
                       width={400}
                       height={300}
                       className="w-full aspect-[4/3] object-cover"
@@ -142,8 +142,8 @@ export default function AboutPage() {
                   </div>
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src="../assets/about/about3.jpg"
-                      alt="Church in the 1950s"
+                      src="../assets/about/about4.jpg"
+                      alt="Church in a local fitness center"
                       width={400}
                       height={300}
                       className="w-full aspect-[4/3] object-cover"
@@ -153,8 +153,8 @@ export default function AboutPage() {
 
                 <div className="overflow-hidden rounded-xl">
                   <img
-                    src="../assets/about/about4.jpg"
-                    alt="Church in the 1980s"
+                    src="../assets/about/about2.jpg"
+                    alt="CGR celebration on new beginnings"
                     width={400}
                     height={300}
                     className="w-full aspect-[4/3] object-cover"

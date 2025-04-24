@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Calendar, Clock, MapPin, Phone, Mail } from "lucide-react"
+import { Calendar, Clock, MapPin, Mail } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,7 +8,9 @@ import { SiteHeader } from "@/components/header"
 import { SiteFooter } from "@/components/footer"
 import { WelcomeSection } from "@/components/welcome"
 import { EventsSection } from "@/components/events"
-import { MinistriesSection } from "@/components/groups"
+import { BeliefsSection } from "@/components/beliefs"
+import type { NextPage } from "next"
+import PhotoCarousel from "@/components/PhotoCarousel"
 
 export default function Home() {
   return (
@@ -28,45 +30,31 @@ export default function Home() {
               <div className="w-full max-w-sm">
                 <Separator className="my-4" />
               </div>
-              <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2">
                 <Card className="overflow-hidden">
                   <CardContent className="p-6">
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-5 w-5 text-slate-700" />
-                      <h3 className="font-medium">Sunday Service</h3>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Calendar className="h-6 w-6 text-slate-700" />
+                      <h3 className="font-medium text-[18px]">Sunday Service</h3>
                     </div>
-                    <p className="mt-2 text-sm text-gray-500">10:00 AM - 11:30 AM</p>
+                    <p className="mt-2 text-gray-500">9:00 AM</p>
                   </CardContent>
                 </Card>
                 <Card className="overflow-hidden">
                   <CardContent className="p-6">
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-5 w-5 text-slate-700" />
-                      <h3 className="font-medium">Wednesday Bible Study</h3>
+                    <div className="flex items-center justify-center space-x-2">
+                      <MapPin className="h-6 w-6 text-slate-700" />
+                      <h3 className="font-medium text-[18px]">Location</h3>
                     </div>
-                    <p className="mt-2 text-sm text-gray-500">7:00 PM - 8:30 PM</p>
+                    <p className="mt-2  text-gray-500">464 High St, Weatherly, PA 18255</p>
                   </CardContent>
                 </Card>
-                <Card className="overflow-hidden sm:col-span-2 md:col-span-1">
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-5 w-5 text-slate-700" />
-                      <h3 className="font-medium">Youth Group</h3>
-                    </div>
-                    <p className="mt-2 text-sm text-gray-500">Friday 6:00 PM - 8:00 PM</p>
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="mt-6">
-                <Button asChild>
-                  <Link href="/worship">View All Services</Link>
-                </Button>
               </div>
             </div>
           </div>
         </section>
         <EventsSection />
-        <MinistriesSection />
+        <BeliefsSection />
         <section className="w-full py-12 md:py-16 lg:py-20">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
             <div className="space-y-4">
@@ -95,7 +83,7 @@ export default function Home() {
                   <Link href="/contact">Contact Us</Link>
                 </Button>
                 <Button variant="outline" asChild>
-                  <Link href="/directions">Get Directions</Link>
+                  <Link href="https://www.google.com/maps/place/Tweedle+Park/@40.940521,-75.8350451,17z/data=!4m15!1m8!3m7!1s0x89c5aeea33035fdd:0xbe9aee0cf974b7ba!2s464+High+St,+Weatherly,+PA+18255!3b1!8m2!3d40.940521!4d-75.8350451!16s%2Fg%2F11c4tyj8l_!3m5!1s0x89c5aeea31a443a5:0x4615253174d3c5f0!8m2!3d40.9408004!4d-75.8350869!16s%2Fg%2F11bwhb9s8n?entry=ttu&g_ep=EgoyMDI1MDQyMC4wIKXMDSoASAFQAw%3D%3D">Get Directions</Link>
                 </Button>
               </div>
             </div>
@@ -103,10 +91,13 @@ export default function Home() {
               <img
                 src="/placeholder.svg?height=550&width=700"
                 alt="Church building exterior"
-                width={700}
-                height={550}
+                width={200}
+                height={350}
                 className="aspect-[4/3] object-cover"
               />
+            </div>
+            <div className="">
+            <PhotoCarousel />
             </div>
           </div>
         </section>
