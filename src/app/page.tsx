@@ -8,7 +8,7 @@ import { SiteHeader } from "@/components/header"
 import { SiteFooter } from "@/components/footer"
 import { WelcomeSection } from "@/components/welcome"
 import { EventsSection } from "@/components/events"
-import { BeliefsSection } from "@/components/beliefs"
+import { GroupsSection } from "@/components/groups"
 import type { NextPage } from "next"
 import PhotoCarousel from "@/components/PhotoCarousel"
 
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
         </section>
         <EventsSection />
-        <BeliefsSection />
+        <GroupsSection />
         <section className="w-full py-12 md:py-16 lg:py-20">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
             <div className="space-y-4">

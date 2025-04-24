@@ -1,4 +1,5 @@
 import { BookOpen, Heart, Users } from "lucide-react";
+import { BeliefsSection } from "@/components/beliefs";
 
 import {
   Card,
@@ -39,61 +40,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <section className="w-full bg-slate-50 py-12 md:py-16 lg:py-20">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Our Mission & Values
-                </h2>
-                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-                  Guided by Scripture and traditional Christian principles.
-                </p>
-              </div>
-              <div className="w-full max-w-sm">
-                <Separator className="my-4" />
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-                <Card>
-                  <CardHeader className="flex flex-col items-center">
-                    <BookOpen className="h-10 w-10 text-slate-700" />
-                    <CardTitle>Scripture</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <CardDescription>
-                      We believe the Bible is the inspired Word of God and the
-                      foundation for all we do and believe.
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader className="flex flex-col items-center">
-                    <Heart className="h-10 w-10 text-slate-700" />
-                    <CardTitle>Love</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <CardDescription>
-                      We are called to love God with all our heart, soul, mind,
-                      and strength, and to love our neighbors as ourselves.
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader className="flex flex-col items-center">
-                    <Users className="h-10 w-10 text-slate-700" />
-                    <CardTitle>Community</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <CardDescription>
-                      We value fellowship and community, supporting one another
-                      in our spiritual journey.
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BeliefsSection />
         <section className="w-full py-12 md:py-16 lg:py-20">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2">
