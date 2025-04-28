@@ -8,7 +8,7 @@ export function WelcomeSection() {
       <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
         <div className="space-y-4">
           <h1 className="font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Church of the Great Redeemer
+            Church of The Great Redeemer
           </h1>
           <p className="max-w-[600px] text-gray-500 md:text-xl">
           Living and growing together in the Word

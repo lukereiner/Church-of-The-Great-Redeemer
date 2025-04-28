@@ -1,38 +1,31 @@
 import Link from "next/link"
-import { Users } from "lucide-react"
+import { BookMarked, MessageCircle, BookOpen } from "lucide-react"
 import { TbBuildingChurch, TbCross, TbBible } from "react-icons/tb"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function GroupsSection() {
-  const ministries = [
+  const groups = [
     {
-      title: "GROUP",
-      icon: <TbCross className="h-10 w-10 text-slate-700" />,
-      description:
-        "A holy God and sinful man, the need for salvation",
-      link: "/ministries/children",
+      icon: <BookMarked className="h-10 w-10 text-slate-700" />,
+      title: "Book Study",
+      description: "Gain understanding of scripture through Christian literature.",
+      meetingInfo: "Every Wednesday at 10:30 AM",
     },
     {
-      title: "The Word",
-      icon: <TbBible className="h-10 w-10 text-slate-700" />,
-      description: "The only Book that gives life",
-      link: "/ministries/music",
+      icon: <MessageCircle className="h-10 w-10 text-slate-700" />,
+      title: "Table Talk",
+      description: "Engage with peers in discussion about important and sensitive matters of our time.",
+      meetingInfo: "Last Saturday of month at 10 AM",
     },
     {
-      title: "Mission & Purpose",
-      icon: <TbBuildingChurch className="h-10 w-10 text-slate-700" />,
-      description: "The role and function of the Church",
-      link: "/ministries/outreach",
+      icon: <BookOpen className="h-10 w-10 text-slate-700" />,
+      title: "Bible Class",
+      description: "Deepen your understanding of the scriptures in a supportive community.",
+      meetingInfo: "Every Thursday at 5 PM",
     },
-    {
-      title: "Social Issues",
-      icon: <Users className="h-10 w-10 text-slate-700" />,
-      description: "Where we stand is where the bible stands",
-      link: "/ministries/outreach",
-    },
-  ]
+  ];
 
   return (
     <section className="w-full bg-slate-50 py-12 md:py-16 lg:py-20">
@@ -44,15 +37,16 @@ export function GroupsSection() {
               Grow your faith in community.
             </p>
           </div>
-          <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2">
-            {ministries.map((ministry) => (
-              <Card key={ministry.title} className="flex flex-col">
+          <div className="grid w-full max-w-5xl gap-6 md:grid-cols-3 lg:grid-cols-3">
+            {groups.map((group) => (
+              <Card key={group.title} className="flex flex-col">
                 <CardHeader className="flex flex-col items-center">
-                  <div className="mb-2">{ministry.icon}</div>
-                  <CardTitle>{ministry.title}</CardTitle>
+                  <div className="mb-2">{group.icon}</div>
+                  <CardTitle>{group.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 text-center">
-                  <CardDescription className="text-sm">{ministry.description}</CardDescription>
+                  <CardDescription className="text-sm">{group.description}</CardDescription>
+                  <p className="mt-2 text-gray-500">{group.meetingInfo}</p>
                 </CardContent>
 {/*                 <CardFooter className="flex justify-center pt-4">
                   <Button variant="outline" asChild>
@@ -64,7 +58,7 @@ export function GroupsSection() {
           </div>
           <div className="mt-6">
             <Button asChild>
-              <Link href="/beliefs">Our Beliefs</Link>
+              <Link href="/groups">Our Groups</Link>
             </Button>
           </div>
         </div>

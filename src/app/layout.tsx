@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Church of the Great Redeemer",
+  title: "Church of The Great Redeemer",
   description: "Living and growing together in the Word",
 };
 

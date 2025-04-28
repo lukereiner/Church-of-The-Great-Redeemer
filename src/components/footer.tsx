@@ -13,7 +13,7 @@ export function SiteFooter() {
           <Link href="/" className="flex items-center space-x-2">
             
             <img className="h-9 w-9" src="../assets/footer-avatar.png" alt="" />
-            <span className="font-serif text-xl font-bold">Church of the Great Redeemer</span>
+            <span className="font-serif text-xl font-bold">Church of The Great Redeemer</span>
           </Link>
           <p className="text-sm text-gray-500">
           Living and growing together in the Word

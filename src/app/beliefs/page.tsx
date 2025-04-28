@@ -35,7 +35,7 @@ const beliefs: Belief[] = [
   {
     title: "The Word",
     icon: <TbBible className="h-10 w-10 text-slate-700" />,
-    description: "The only Book that gives life",
+    description: "We believe the bible is the inspired, God-breathed, infallible and inerrant Word of God, containing all things necessary for life and salvation. While we may in our faith learn and grow by other means, such as reason, tradition, or experience, scripture alone is the primary rule and authority for faith, against which all other authorities must be measured. ",
   },
   {
     title: "Mission & Purpose",

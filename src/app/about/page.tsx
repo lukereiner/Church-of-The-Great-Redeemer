@@ -24,7 +24,7 @@ export default function AboutPage() {
                 About Our Church
               </h1>
               <p className="max-w-[600px] text-gray-500 md:text-xl">
-                The Church of the Great Redeemer has been serving our community
+                The Church of The Great Redeemer has been serving our community
                 since 2024. We are committed to sharing the Gospel and living
                 out our faith through worship, fellowship, and service.
               </p>
@@ -49,9 +49,9 @@ export default function AboutPage() {
                   Our History
                 </h2>
                 <p className="text-gray-500">
-                  The Church of the Great Redeemer (CGR) originated from a group
+                  The Church of The Great Redeemer (CGR) originated from a group
                   of Christians who, following the 2024 UMC General Conference,
-                  made the decision to leave the United Methodist Church due to
+                  made the decision to leave the United Methodist denomination due to
                   differences in their faith and mission. CGR seeks to worship
                   God in spirit and truth (John 4:24), abide by His Word, and
                   grow in love and holiness. As a faithful remnant of the
@@ -80,7 +80,7 @@ export default function AboutPage() {
                 <div className="grid gap-4 md:grid-cols-2 md:gap-x-4">
                   <div className="overflow-hidden rounded-xl">
                     <img
-                      src="../assets/about/about3.jpg"
+                      src="../assets/about/about3.1.jpg"
                       alt="Church in a school gymnasium"
                       width={400}
                       height={300}
@@ -129,7 +129,7 @@ export default function AboutPage() {
           </p>
 
           <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
-            Pastor Dan experienced his call to ministry at a young age in 2017. Like many individuals in the Bible, he resisted that calling at first but realizes how blessed he is to be able to serve the Lord through his ministry.
+            Pastor Dan experienced his call to ministry at a young age in 2017. Like many individuals in the Bible, he resisted that calling at first but realized how blessed he is to be able to serve the Lord through his ministry.
           </p>
 
           <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">

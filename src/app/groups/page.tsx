@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { Users, BookOpen, Heart, BookMarked, MessageCircle } from "lucide-react";
+"use client"
+
+import { BookOpen, BookMarked, MessageCircle } from "lucide-react";
 
 import {
   Card,
@@ -11,28 +12,76 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
+import { useState, useEffect } from "react";
+
+interface Group {
+  id: number;
+  documentId: string;
+  Name: string;
+  Description: string;
+  Schedule: string;
+  Location: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  Icon?: {
+      id: number;
+      documentId: string;
+      name: string;
+      alternativeText: string;
+      caption: string;
+      width: number;
+      height: number;
+      formats: {
+          thumbnail: {
+              name: string;
+              hash: string;
+              ext: string;
+              mime: string;
+              path: any;
+              width: number;
+              height: number;
+              size: number;
+              sizeInBytes: number;
+              url: string;
+          };
+      };
+      hash: string;
+      ext: string;
+      mime: string;
+      size: number;
+      url: string;
+      previewUrl: any;
+      provider: string;
+      provider_metadata: any;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+  };
+}
 
 export default function GroupsPage() {
-  const groups = [
-    {
-      icon: <BookMarked className="h-10 w-10 text-slate-700" />,
-      title: "Book Study",
-      description: "Gain understanding of scripture through Christian literature.",
-      meetingInfo: "Every Wednesday at 10:30 AM",
-    },
-    {
-      icon: <MessageCircle className="h-10 w-10 text-slate-700" />,
-      title: "Table Talk",
-      description: "Engage with peers in discussion about important and sensitive matters of our time.",
-      meetingInfo: "Every other Saturday at 10 AM",
-    },
-    {
-      icon: <BookOpen className="h-10 w-10 text-slate-700" />,
-      title: "Bible Class",
-      description: "Deepen your understanding of the scriptures in a supportive community.",
-      meetingInfo: "Every Thursday at 5 PM",
-    },
-  ];
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    async function fetchGroups() {
+      try {
+        const response = await fetch("http://localhost:1337/api/groups?populate=Icon");
+        const data = await response.json();
+        const adjustedData = data.data.map((group) => ({
+          name: group.Name,
+          description: group.Description,
+          schedule: group.Schedule,
+          location: group.Location,
+          icon: group.Icon.url
+        }));
+        setGroups(adjustedData);
+      } catch (error) {
+        console.error("Error fetching groups:", error);
+      }
+    }
+    fetchGroups();
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col items-center">
@@ -56,12 +105,16 @@ export default function GroupsPage() {
                 {groups.map((group, index) => (
                   <Card key={index}>
                     <CardHeader className="flex flex-col items-center">
-                      {group.icon}
-                      <CardTitle>{group.title}</CardTitle>
+                      <img className="h-10 w-10 text-slate-700" src={`http://localhost:1337${groups[index].icon}`} alt="" />
+                      <CardTitle>{group.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center">
                       <CardDescription>{group.description}</CardDescription>
                       <p className="mt-2 text-gray-500">{group.meetingInfo}</p>
+                    </CardContent>
+                    <CardContent className="text-center">
+                      <CardDescription>{group.schedule}</CardDescription>
+                      <p className="mt-2 text-gray-500">{group.location}</p>
                     </CardContent>
                   </Card>
                 ))}
