@@ -112,9 +112,9 @@ export default function GroupsPage() {
                       <CardDescription>{group.description}</CardDescription>
                       <p className="mt-2 text-gray-500">{group.meetingInfo}</p>
                     </CardContent>
-                    <CardContent className="text-center">
+                    <CardContent className="mt-auto text-center">
                       <CardDescription>{group.schedule}</CardDescription>
-                      <p className="mt-2 text-gray-500">{group.location}</p>
+                      <CardDescription>{group.location}</CardDescription>
                     </CardContent>
                   </Card>
                 ))}

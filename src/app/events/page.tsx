@@ -1,19 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import { Calendar as ReactCal, Clock, MapPin, Mail } from "lucide-react";
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import {Calendar as ReactCal, Clock} from 'lucide-react'
 
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
 
-const localizer = momentLocalizer(moment);
-
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
   const [monthlyEvents, setMonthlyEvents] = useState([]);
+  const [currentMonth, setCurrentMonth] = useState(moment().month());
 
   useEffect(() => {
     async function fetchEvents() {
@@ -23,22 +24,17 @@ export default function EventsPage() {
         const adjustedData = data.data.map((event) => ({
           id: event.id,
           title: event.title,
-          date: new Date(event.date),
+          start: new Date(event.date),
           description: event.description,
           allDay: false, // set to true if your event spans the whole day
         }));
-        adjustedData.sort((a, b) => new Date(a.date) - new Date(b.date));
-        const currentDate = new Date();
-        const upcomingEvents = adjustedData.filter(
-          (event) => new Date(event.date) > currentDate
-        );
-        setEvents(upcomingEvents);
+        adjustedData.sort((a, b) => new Date(a.start) - new Date(b.start));
+/*         const upcomingEvents = adjustedData.filter(
+          (event) => new Date(event.start) > new Date()
+        );  */// To set calendar to show future events, and remove any past events
+        setEvents(adjustedData);
 
-        const currentMonth = moment().month();
-        const currentMonthEvents = adjustedData.filter(
-          (event) => moment(event.date).month() === currentMonth
-        );
-        setMonthlyEvents(currentMonthEvents);
+        updateMonthlyEvents(adjustedData, currentMonth);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
@@ -46,7 +42,20 @@ export default function EventsPage() {
     fetchEvents();
   }, []);
 
-  const currentMonthName = moment().format("MMMM");
+  const updateMonthlyEvents = (eventData, month) => {
+    const filteredEvents = eventData.filter(
+      (event) => moment(event.start).month() === month
+    );
+    setMonthlyEvents(filteredEvents);
+  };
+
+  const handleDatesSet = (rangeInfo) => {
+    const newMonth = moment(rangeInfo.view.currentStart).month();
+    setCurrentMonth(newMonth);
+    updateMonthlyEvents(events, newMonth);
+  };
+
+  const currentMonthName = moment().month(currentMonth).format("MMMM");
 
   return (
     <div className="flex min-h-screen flex-col items-center">
@@ -61,27 +70,22 @@ export default function EventsPage() {
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
                 Stay up to date with our upcoming events.
               </p>
-              <Calendar
-                localizer={localizer}
+              <FullCalendar
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                initialView="dayGridMonth"
                 events={events}
-                startAccessor="date"
-                endAccessor="date"
-                style={{ height: 600, width: "80vw" }}
-                className="mb-8"
-                eventPropGetter={(event) => ({
-                  style: { backgroundColor: "#022438" },
-                })}
-                components={{
-                  event: ({ event }) => (
-                    <span style={{ fontSize: "12px" }}>
-                      {" "}
-                      {/* Adjust the font size here */}
-                      <strong>{event.title}</strong>
-                      <br />
-                      {moment(event.date).format("HH:mm")}
-                    </span>
-                  ),
-                }}
+                height="auto"
+                datesSet={handleDatesSet}
+                eventContent={({ event }) => (
+                  <span style={{ fontSize: "12px", background:'#d1cdba', width: "100%", padding: "8px", overflow: "hidden", 
+                    whiteSpace: "normal", // Allows text to wrap
+                    wordWrap: "break-word" // Breaks long words 
+                  }}>
+                    <strong>{event.title}</strong>
+                    <br />
+                    {moment(event.start).format("HH:mm")}
+                  </span>
+                )}
               />
               <div className="w-full mt-8">
                 <h2 className="text-2xl font-semibold mb-4">
@@ -96,11 +100,10 @@ export default function EventsPage() {
                       </div>
                       <div className="flex gap-1">
                         <Clock className="w-5 h-6"></Clock>
-                      <p>
-                        {moment(event.date).format("MMMM Do, YYYY [at] HH:mm")}
-                      </p>
+                        <p>
+                          {moment(event.start).format("MMMM Do, YYYY [at] HH:mm")}
+                        </p>
                       </div>
-
                       <p>{event.description}</p>
                     </li>
                   ))}
