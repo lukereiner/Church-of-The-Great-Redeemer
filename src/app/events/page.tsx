@@ -6,15 +6,28 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import moment from "moment";
-import {Calendar as ReactCal, Clock} from 'lucide-react'
+import { Calendar as ReactCal, Clock } from 'lucide-react'
 
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
+import { Separator } from "@/components/ui/separator"
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
   const [monthlyEvents, setMonthlyEvents] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(moment().month());
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768); // Example breakpoint for mobile
+    };
+
+    window.addEventListener('resize', checkScreenSize);
+    checkScreenSize(); // Initial check
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -57,6 +70,37 @@ export default function EventsPage() {
 
   const currentMonthName = moment().month(currentMonth).format("MMMM");
 
+  const renderEventContent = (event) => {
+    if (isMobile) {
+      return (
+        ({ event }) => (
+          <span id="event-span" style={{ fontSize: "10px", background:'#d1cdba', width: "100%", padding: "8px", overflow: "hidden", 
+            whiteSpace: "normal", // Allows text to wrap
+            borderRadius: "4px"
+          }}>
+            <strong>{event.title}</strong>
+            <br />
+            {moment(event.start).format("h:mm A")}
+          </span>
+        )
+      );
+    }
+    return (
+      ({ event }) => (
+        <span id="event-span" style={{ fontSize: "12px", background:'#d1cdba', width: "100%", padding: "8px", overflow: "hidden", 
+          whiteSpace: "normal", // Allows text to wrap
+          wordWrap: "break-word", // Breaks long words 
+          borderRadius: "4px"
+        }}>
+          <strong>{event.title}</strong>
+          <br />
+          {moment(event.start).format("h:mm A")}
+        </span>
+      )
+    );
+  }; // for mobile responsiveness of calendar
+
+
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
@@ -64,32 +108,35 @@ export default function EventsPage() {
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
-              <h1 className="font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              <h1 className="font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-2">
                 Church Events
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
                 Stay up to date with our upcoming events.
               </p>
+              <div className="w-full max-w-3xl">
+                <Separator className="my-4" />
+              </div>
               <FullCalendar
+                headerToolbar={{
+                  start: "title",
+                  end: "today prev next"
+                }}
+                eventTimeFormat={{
+                  hour: 'numeric',
+                  minute: '2-digit',
+                  meridiem: 'short'
+                }}
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 events={events}
                 height="auto"
                 datesSet={handleDatesSet}
-                eventContent={({ event }) => (
-                  <span style={{ fontSize: "12px", background:'#d1cdba', width: "100%", padding: "8px", overflow: "hidden", 
-                    whiteSpace: "normal", // Allows text to wrap
-                    wordWrap: "break-word" // Breaks long words 
-                  }}>
-                    <strong>{event.title}</strong>
-                    <br />
-                    {moment(event.start).format("HH:mm")}
-                  </span>
-                )}
+                eventContent={renderEventContent}
               />
-              <div className="w-full mt-8">
-                <h2 className="text-2xl font-semibold mb-4">
-                  Event List for {currentMonthName}
+              <div className="w-full mt-0">
+                <h2 className="text-2xl font-semibold mb-4 text-decoration-line: underline">
+                  What's happening in {currentMonthName}
                 </h2>
                 <ul className="space-y-4">
                   {monthlyEvents.map((event) => (
@@ -101,7 +148,7 @@ export default function EventsPage() {
                       <div className="flex gap-1">
                         <Clock className="w-5 h-6"></Clock>
                         <p>
-                          {moment(event.start).format("MMMM Do, YYYY [at] HH:mm")}
+                          {moment(event.start).format("MMMM Do, YYYY [at] h:mm A")}
                         </p>
                       </div>
                       <p>{event.description}</p>

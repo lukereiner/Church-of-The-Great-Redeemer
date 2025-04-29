@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { SiteHeader } from "@/components/header"
 import { SiteFooter } from "@/components/footer"
+import { Separator } from "@/components/ui/separator"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -51,6 +52,9 @@ export default function ContactPage() {
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
                   We'd love to hear from you. Reach out with any questions or prayer requests.
                 </p>
+              </div>
+              <div className="w-full max-w-3xl">
+                <Separator className="my-4" />
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-2">
