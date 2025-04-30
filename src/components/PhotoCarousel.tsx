@@ -2,9 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface Photo {
   id: number;
@@ -34,50 +33,32 @@ const PhotoCarousel: React.FC = () => {
     fetchPhotos();
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1000,
-    fade: true,
-    centerMode: false, // Disable if causing issues
-  centerPadding: '0px', // Adjust padding if needed
-    responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false
-          },
-        },
-      ],
-  };
-
   return (
-    <Slider {...settings}>
-      {photos.map((photo) => (
-        <div key={photo.id}>
-          <Image
-            src={`http://localhost:1337${photo.image[0].url}`}
-            alt={photo.title || 'Photo'}
-            fill={false}
-            width={300}
-            height={200}
-          />
-        </div>
-      ))}
-    </Slider>
+    <div> 
+      <Carousel
+        showArrows={false}
+        autoPlay={true}
+        infiniteLoop={true}
+        showThumbs={false}
+        showStatus={false}
+        interval={3000} // Adjust the speed of auto cycle
+        dynamicHeight={true}
+      >
+        {photos.map((photo) => (
+          <div key={photo.id}>
+            <Image
+              src={`http://localhost:1337${photo.image[0].url}`}
+              alt={photo.title || 'Photo'}
+              fill={false}
+              width={600}
+              height={800}
+              quality={100}
+              style={{borderRadius: '8px'}}
+            />
+          </div>
+        ))}
+      </Carousel>
+    </div>
   );
 };
 

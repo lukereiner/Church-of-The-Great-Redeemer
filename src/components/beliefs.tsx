@@ -35,7 +35,7 @@ export function BeliefsSection() {
   ]
 
   return (
-    <section className="w-full bg-slate-50 py-12 md:py-16 lg:py-20">
+    <section className="w-full bg-[#d1cdba]/15 py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -46,7 +46,7 @@ export function BeliefsSection() {
           </div>
           <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2">
             {beliefs.map((belief) => (
-              <Card key={belief.title} className="flex flex-col">
+              <Card key={belief.title} className="flex flex-col border-2 border-black-600 border-[#d1cdba]">
                 <CardHeader className="flex flex-col items-center">
                   <div className="mb-2">{belief.icon}</div>
                   <CardTitle>{belief.title}</CardTitle>

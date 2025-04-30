@@ -111,7 +111,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <section className="w-full bg-slate-50 py-12 md:py-16 lg:py-20">
+        <section className="w-full bg-[#d1cdba]/15 py-12 md:py-16 lg:py-20">
   <div className="container px-4 md:px-6">
     <div className="flex flex-col items-center justify-center space-y-8 text-center">
       <div className="space-y-2">

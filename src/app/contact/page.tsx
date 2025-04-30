@@ -69,6 +69,7 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input
+                    className="border-2 border-black-600 border-[#d1cdba]"
                       id="name"
                       name="name"
                       value={formData.name}
@@ -80,6 +81,7 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input
+                    className="border-2 border-black-600 border-[#d1cdba]"
                       id="email"
                       name="email"
                       type="email"
@@ -92,6 +94,7 @@ export default function ContactPage() {
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone (optional)</Label>
                     <Input
+                    className="border-2 border-black-600 border-[#d1cdba]"
                       id="phone"
                       name="phone"
                       type="tel"
@@ -109,7 +112,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="Your message"
                       required
-                      className="min-h-[150px]"
+                      className="min-h-[150px] border-2 border-black-600 border-[#d1cdba]"
                     />
                   </div>
                   <Button type="submit" className="w-full">
@@ -125,7 +128,7 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <div className="grid gap-4">
-                  <Card>
+                  <Card className="border-2 border-black-600 border-[#d1cdba]">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <MapPin className="mt-1 h-5 w-5 text-slate-700" />
@@ -137,18 +140,18 @@ export default function ContactPage() {
                       </div>
                     </CardContent>
                   </Card>
-                  <Card>
+                  <Card className="border-2 border-black-600 border-[#d1cdba]">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <Mail className="mt-1 h-5 w-5 text-slate-700" />
                         <div>
                           <h3 className="font-medium">Email</h3>
-                          <p className="text-sm text-gray-500">weatherlycgr@protonmail.com</p>
+                          <p className="text-sm text-gray-500">contact@greatredeemerchurch.org</p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
-                  <Card>
+                  <Card className="border-2 border-black-600 border-[#d1cdba]">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <Clock className="mt-1 h-5 w-5 text-slate-700" />

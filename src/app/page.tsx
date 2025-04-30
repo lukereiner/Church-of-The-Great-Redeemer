@@ -18,7 +18,7 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <WelcomeSection />
-        <section className="w-full bg-slate-50 py-12 md:py-16 lg:py-20">
+        <section className="w-full bg-[#d1cdba]/15 py-12 md:py-16 lg:py-20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -31,20 +31,20 @@ export default function Home() {
                 <Separator className="my-4" />
               </div>
               <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2">
-                <Card className="overflow-hidden">
+                <Card className="overflow-hidden border-2 border-black-600 border-[#d1cdba]">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-center space-x-2">
                       <Calendar className="h-6 w-6 text-slate-700" />
-                      <h3 className="font-medium text-[18px]">Sunday Service</h3>
+                      <h3 className="font-medium">Sunday Service</h3>
                     </div>
                     <p className="mt-2 text-gray-500">9:00 AM</p>
                   </CardContent>
                 </Card>
-                <Card className="overflow-hidden">
+                <Card className="overflow-hidden border-2 border-black-600 border-[#d1cdba]">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-center space-x-2">
                       <MapPin className="h-6 w-6 text-slate-700" />
-                      <h3 className="font-medium text-[18px]">Location</h3>
+                      <h3 className="font-medium">Location</h3>
                     </div>
                     <p className="mt-2  text-gray-500">464 High St, Weatherly, PA 18255</p>
                   </CardContent>
@@ -71,7 +71,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-5 w-5 text-slate-700" />
-                  <span>weatherlycgr@protonmail.com</span>
+                  <span>contact@greatredeemerchurch.org</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-5 w-5 text-slate-700" />
@@ -87,18 +87,10 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="mx-auto overflow-hidden rounded-xl">
-              <img
-                src="/placeholder.svg?height=550&width=700"
-                alt="Church building exterior"
-                width={200}
-                height={350}
-                className="aspect-[4/3] object-cover"
-              />
+            <div className="flex align-center">
+              <PhotoCarousel />
             </div>
-            <div className="">
-            <PhotoCarousel />
-            </div>
+            
           </div>
         </section>
       </main>

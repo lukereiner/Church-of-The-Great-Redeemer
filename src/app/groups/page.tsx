@@ -1,7 +1,5 @@
 "use client"
 
-import { BookOpen, BookMarked, MessageCircle } from "lucide-react";
-
 import {
   Card,
   CardContent,
@@ -91,7 +89,7 @@ export default function GroupsPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
               <div className="space-y-2">
-                <h1 className="font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                   Church Groups
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
@@ -103,18 +101,17 @@ export default function GroupsPage() {
               </div>
               <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {groups.map((group, index) => (
-                  <Card key={index}>
+                  <Card key={index} className="border-2 border-black-600 border-[#d1cdba]">
                     <CardHeader className="flex flex-col items-center">
                       <img className="h-10 w-10 text-slate-700" src={`http://localhost:1337${groups[index].icon}`} alt="" />
                       <CardTitle>{group.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center">
-                      <CardDescription>{group.description}</CardDescription>
-                      <p className="mt-2 text-gray-500">{group.meetingInfo}</p>
+                      <CardDescription className="font-semibold">{group.description}</CardDescription>
                     </CardContent>
                     <CardContent className="mt-auto text-center">
-                      <CardDescription>{group.schedule}</CardDescription>
-                      <CardDescription>{group.location}</CardDescription>
+                      <CardDescription className="">{group.schedule}</CardDescription>
+                      <CardDescription className="">{group.location}</CardDescription>
                     </CardContent>
                   </Card>
                 ))}

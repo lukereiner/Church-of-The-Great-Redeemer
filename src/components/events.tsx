@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Calendar } from "lucide-react"
 import { useEffect, useState } from "react"
+import moment from "moment";
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -38,6 +39,7 @@ export function EventsSection() {
           id: event.id,
           title: event.title,
           date: new Date(event.date).toLocaleDateString(),
+          time: new Date(event.date),
           description: event.description,
           allDay: false, // set to true if your event spans the whole day
         }));
@@ -64,16 +66,16 @@ export function EventsSection() {
           </div>
           <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
             {events.slice(0, isSmallScreen ? 3 : 6).map((event) => (
-              <Card key={event.title} className="flex flex-col">
+              <Card key={event.title} className="flex flex-col border-2 border-black-600 border-[#d1cdba]">
                 <CardHeader>
                   <div className="flex items-center gap-2 text-slate-700">
                     <Calendar className="h-5 w-5" />
-                    <CardDescription>{event.date}</CardDescription>
+                    <CardDescription>{event.date} at {moment(event.time).format("h:mm A")}</CardDescription>
                   </div>
                   <CardTitle className="line-clamp-1 h-5">{event.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="flex-1 line-clamp-3 text-left">
-                  <p className="text-gray-500">{event.description}</p>
+                <CardContent className="flex-1 line-clamp-3 md:text-left sm:text-center">
+                  <p className="text-gray-500 text-sm">{event.description}</p>
                 </CardContent>
               </Card>
             ))}
