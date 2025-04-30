@@ -71,7 +71,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-5 w-5 text-slate-700" />
-                  <span>contact@greatredeemerchurch.org</span>
+                  <span>pastor@greatredeemerchurch.org</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-5 w-5 text-slate-700" />
