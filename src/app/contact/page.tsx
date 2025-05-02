@@ -15,6 +15,8 @@ import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
 
+import { sendEmail } from "../api/emails/sendEmail";
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -32,16 +34,36 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, you would handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message. We will get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+
+    sendEmail(formData);
+
+    /* console.log('Form data:', formData.subject);
+    
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === 'Email sent successfully') {
+          alert('Thank you for your message. We will get back to you soon.');
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          });
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Failed to send your message. Please try again later.');
+      }); */
   };
+  
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -68,7 +90,7 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold">Get in Touch</h2>
                   <p className="text-gray-500">
-                    Fill out the form below and we'll get back to you as soon as
+                    Send us a message and we'll get back to you as soon as
                     possible.
                   </p>
                 </div>
@@ -109,11 +131,11 @@ export default function ContactPage() {
                       required
                     >
                       <option value=""></option>
-                      <option className="hover:bg-[#d1cdba]" value="general-inquiries">
+                      <option className="hover:bg-[#d1cdba]" value="General Inquiry">
                         General Inquiries
                       </option>
-                      <option value="prayer-request">Prayer Request</option>
-                      <option value="other">Other</option>
+                      <option value="Prayer Request">Prayer Request</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                   <div className="space-y-2">
@@ -125,7 +147,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="Your message"
                       required
-                      className="min-h-[150px] border-2 border-black-600 border-[#d1cdba]"
+                      className="min-h-[190px] border-2 border-black-600 border-[#d1cdba]"
                     />
                   </div>
                   <Button type="submit" className="w-full">
