@@ -12,10 +12,10 @@ export function SiteFooter() {
         <div className="flex flex-col gap-2">
           <Link href="/" className="flex items-center space-x-2">
             
-            <img className="h-9 w-9" src="../assets/footer-avatar.png" alt="" />
-            <span className="font-serif text-xl font-bold">Church of The Great Redeemer</span>
+            <img className="h-11 w-11" src="../assets/footer-avatar.png" alt="" />
+            <span className="font-roboto text-xl font-bold">Church of The Great Redeemer</span>
           </Link>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 pl-2 pr-4">
           Living and growing together in the Word
           </p>
         </div>
@@ -26,7 +26,7 @@ export function SiteFooter() {
               About Us
             </Link>
             <Link href="/beliefs" className="text-sm text-gray-500 hover:underline">
-              Beliefs
+              Our Beliefs
             </Link>
             <Link href="/groups" className="text-sm text-gray-500 hover:underline">
               Groups
@@ -41,17 +41,17 @@ export function SiteFooter() {
           <address className="grid gap-2 not-italic text-sm text-gray-500">
             <p>464 High Street</p>
             <p>Weatherly, PA 18255</p>
-            <p>pastor@greatredeemerchurch.org</p>
+            <a href="mailto:pastor@greatredeemerchurch.org"><p>pastor@greatredeemerchurch.org</p></a>
           </address>
           <div className="flex gap-2">
             <Button variant="outline" size="icon" asChild>
-              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.facebook.com/profile.php?id=61562283398016" target="_blank" rel="noopener noreferrer">
                 <Facebook className="h-4 w-4" />
                 <span className="sr-only">Facebook</span>
               </Link>
             </Button>
             <Button variant="outline" size="icon" asChild>
-              <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.youtube.com/@ChurchoftheGreatRedeemer" target="_blank" rel="noopener noreferrer">
                 <Youtube className="h-4 w-4" />
                 <span className="sr-only">YouTube</span>
               </Link>
@@ -70,7 +70,7 @@ export function SiteFooter() {
       <Separator />
       <div className="container flex flex-col items-center justify-between gap-4 px-4 py-6 md:flex-row md:px-6">
         <p className="text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Church of the Great Redeemer. All rights reserved.
+          © {new Date().getFullYear()} Church of The Great Redeemer. All rights reserved.
         </p>
       </div>
     </footer>

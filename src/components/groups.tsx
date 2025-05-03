@@ -86,7 +86,7 @@ const [groups, setGroups] = useState([]);
   return (
     
       <main className="flex-1">
-        <section className="w-full bg-[#d1cdba]/15 py-12 md:py-24 lg:py-32">
+        <section className="w-full bg-[#d1cdba]/15 py-12 md:py-16 lg:py-20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
               <div className="space-y-2">
@@ -97,7 +97,7 @@ const [groups, setGroups] = useState([]);
                   Join one of our church groups to grow in faith and community.
                 </p>
               </div>
-              <div className="w-full max-w-3xl">
+              <div className="w-full max-w-sm">
                 <Separator className="my-4" />
               </div>
               <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

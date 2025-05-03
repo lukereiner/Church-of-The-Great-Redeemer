@@ -18,12 +18,15 @@ export const sendEmail = async (values: Values) => {
         if (response.ok) {
             alert('Email sent! We will respond as soon as we can!')
             console.log('Email sent successfully with resend!');
+            return true; // Indicate success
         } else {
             const errorDetails = await response.json();
             console.error('Error sending email:', errorDetails.message);
+            return false; // Indicate failure
         }
     } catch (error) {
-        alert('There was a problem sending the email. Please try emailing us directly @ pastor@greatredeemerchurch.org')
+        alert('There was a problem sending the email. Please try emailing us directly at: pastor@greatredeemerchurch.org')
         console.error('There was a problem sending the email:', error);
+        return false; // Indicate failure
     }
 };

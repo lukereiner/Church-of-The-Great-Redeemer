@@ -32,38 +32,21 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    sendEmail(formData);
+    const emailSent = await sendEmail(formData);
 
-    /* console.log('Form data:', formData.subject);
-    
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message === 'Email sent successfully') {
-          alert('Thank you for your message. We will get back to you soon.');
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-          });
-        } else {
-          alert(data.message);
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        alert('Failed to send your message. Please try again later.');
-      }); */
+    if (emailSent) {
+      // Reset form fields
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    }
   };
-  
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -131,7 +114,10 @@ export default function ContactPage() {
                       required
                     >
                       <option value=""></option>
-                      <option className="hover:bg-[#d1cdba]" value="General Inquiry">
+                      <option
+                        className="hover:bg-[#d1cdba]"
+                        value="General Inquiry"
+                      >
                         General Inquiries
                       </option>
                       <option value="Prayer Request">Prayer Request</option>
@@ -184,9 +170,11 @@ export default function ContactPage() {
                         <Mail className="mt-1 h-5 w-5 text-slate-700" />
                         <div>
                           <h3 className="font-medium">Email</h3>
-                          <p className="text-sm text-gray-500">
-                            pastor@greatredeemerchurch.org
-                          </p>
+                          <a href="mailto:pastor@greatredeemerchurch.org">
+                            <p className="text-sm text-gray-500">
+                              pastor@greatredeemerchurch.org
+                            </p>
+                          </a>
                         </div>
                       </div>
                     </CardContent>

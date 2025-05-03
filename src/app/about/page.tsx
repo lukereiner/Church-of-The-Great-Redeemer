@@ -122,6 +122,9 @@ export default function AboutPage() {
           Meet our pastor who guides our church community.
         </p>
       </div>
+      <div className="w-full max-w-sm">
+                <Separator className="my-0" />
+              </div>
       <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2 items-center justify-center">
         <div className="flex flex-col space-y-4">
           <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">

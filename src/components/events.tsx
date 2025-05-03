@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Calendar } from "lucide-react"
 import { useEffect, useState } from "react"
+import { Separator } from "./ui/separator"
 import moment from "moment";
 
 import { Button } from "@/components/ui/button"
@@ -64,6 +65,9 @@ export function EventsSection() {
               Join us for these special events and activities.
             </p>
           </div>
+          <div className="w-full max-w-sm">
+                <Separator className="my-4" />
+              </div>
           <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
             {events.slice(0, isSmallScreen ? 3 : 6).map((event) => (
               <Card key={event.title} className="flex flex-col border-2 border-black-600 border-[#d1cdba]">

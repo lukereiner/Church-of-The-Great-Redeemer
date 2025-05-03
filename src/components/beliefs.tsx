@@ -5,6 +5,8 @@ import { TbBuildingChurch, TbCross, TbBible } from "react-icons/tb"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
+import { Separator } from "./ui/separator"
+
 export function BeliefsSection() {
   const beliefs = [
     {
@@ -44,6 +46,9 @@ export function BeliefsSection() {
               Articles of Faith and Doctrine.
             </p>
           </div>
+          <div className="w-full max-w-sm">
+                <Separator className="my-4" />
+              </div>
           <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2">
             {beliefs.map((belief) => (
               <Card key={belief.title} className="flex flex-col border-2 border-black-600 border-[#d1cdba]">

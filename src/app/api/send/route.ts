@@ -17,8 +17,8 @@ export async function POST(req: NextRequest) {
             from: 'contact@greatredeemerchurch.org',
             to: 'lukereiner@greatredeemerchurch.org',
             subject: subject,
-            html: `<div style="max-width: 600px; margin: auto; background-color: white; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border-radius: 4px;"><h1 style="color: #333;">Message from: ${name}</h1>
-       <h2 style="color: #666;">${subject}</h2>
+            html: `<div style="max-width: 600px; margin: auto; background-color: white; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border-radius: 4px;"><h1 style="color: #333;">From: ${name}</h1>
+       <h2 style="color: #666;">Subject: ${subject}</h2>
        <p style="line-height: 1.5;">${message}</p>
        <p>Respond at <a href="mailto:${email}?subject=${encodeURIComponent(subject)}">${email}</a></p>
        </div>`,

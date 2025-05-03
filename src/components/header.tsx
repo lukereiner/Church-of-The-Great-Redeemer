@@ -15,7 +15,7 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center px-4 sm:px-6">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <img className="h-9 w-9" src="../assets/home/avatar.png"/>
-          <span className="hidden font-serif text-xl font-bold sm:inline-block text-[#d1cdba]">Church of The Great Redeemer</span>
+          <span className="hidden font-roboto text-xl font-bold sm:inline-block text-[#d1cdba]">Church of The Great Redeemer</span>
         </Link>
         <nav className="hidden flex-1 items-center justify-center space-x-6 md:flex">
           <Link href="/about" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
