@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import Image from "next/image";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -9,10 +10,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { SiteHeader } from "@/components/header";
 import { useState, useEffect } from "react";
 
-interface Group {
+/* interface Group {
   id: number;
   documentId: string;
   Name: string;
@@ -56,7 +56,7 @@ interface Group {
       updatedAt: string;
       publishedAt: string;
   };
-}
+} */
 
 
 export function GroupsSection() {
@@ -104,7 +104,12 @@ const [groups, setGroups] = useState([]);
                 {groups.map((group, index) => (
                   <Card key={index} className="border-2 border-black-600 border-[#d1cdba]">
                     <CardHeader className="flex flex-col items-center">
-                      <img className="h-10 w-10 text-slate-700" src={`http://localhost:1337${groups[index].icon}`} alt="" />
+                    <Image
+                      src={`http://localhost:1337${group.icon}`}
+                      alt={group.name}
+                      width={50} // Provide a specific width
+                      height={50} // Provide a specific height
+                    />
                       <CardTitle>{group.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center">

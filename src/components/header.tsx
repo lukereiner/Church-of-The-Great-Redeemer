@@ -1,27 +1,41 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Menu } from "lucide-react"
-import { useState } from "react"
+import Link from "next/link";
+import Image from "next/image";
+import { Menu } from "lucide-react";
+import { useState } from "react";
 
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function SiteHeader() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-[#022438]">
       <div className="container flex h-16 items-center px-4 sm:px-6">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <img className="h-9 w-9" src="../assets/home/avatar.png"/>
-          <span className="hidden font-roboto text-xl font-bold sm:inline-block text-[#d1cdba]">Church of The Great Redeemer</span>
+          <Image
+            src="/assets/home/avatar.png" // Adjust the path as needed
+            alt="Church of The Great Redeemer"
+            width={36} // Provide a specific width (36 pixels for 9x9)
+            height={36} // Provide a specific height (36 pixels for 9x9)
+          />
+          <span className="hidden font-roboto text-xl font-bold sm:inline-block text-[#d1cdba]">
+            Church of The Great Redeemer
+          </span>
         </Link>
         <nav className="hidden flex-1 items-center justify-center space-x-6 md:flex">
-          <Link href="/about" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link
+            href="/about"
+            className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]"
+          >
             About
           </Link>
-          <Link href="/beliefs" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link
+            href="/beliefs"
+            className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]"
+          >
             Beliefs
           </Link>
           <Link
@@ -30,16 +44,32 @@ export function SiteHeader() {
           >
             Groups
           </Link>
-          <Link href="/events" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link
+            href="/events"
+            className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]"
+          >
             Events
           </Link>
-          <Link href="/contact" className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]">
+          <Link
+            href="/contact"
+            className="text-md font-medium text-[#d1cdba] transition-colors hover:text-[#ffffff]"
+          >
             Contact
           </Link>
         </nav>
         <div className="ml-auto flex items-center space-x-2">
-          <Button variant="outline" size="sm" asChild className="hidden md:flex sm:ml-6">
-            <a href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2" target="_blank">Donate</a>
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="hidden md:flex sm:ml-6"
+          >
+            <a
+              href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2"
+              target="_blank"
+            >
+              Donate
+            </a>
           </Button>
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
@@ -86,8 +116,17 @@ export function SiteHeader() {
                   Contact
                 </Link>
                 <div className="flex flex-col gap-2">
-                  <Button variant="outline" asChild onClick={() => setIsMenuOpen(false)}>
-                  <a href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2" target="_blank">Donate</a>
+                  <Button
+                    variant="outline"
+                    asChild
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <a
+                      href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2"
+                      target="_blank"
+                    >
+                      Donate
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -96,6 +135,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
-

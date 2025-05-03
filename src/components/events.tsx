@@ -7,7 +7,7 @@ import { Separator } from "./ui/separator"
 import moment from "moment";
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function EventsSection() {
   const [events, setEvents] = useState([]);

@@ -1,20 +1,50 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import { DatesSetArg } from "@fullcalendar/core/index.js";
 import moment from "moment";
-import { Calendar as ReactCal, Clock } from 'lucide-react'
+import { Calendar as ReactCal, Clock } from "lucide-react";
 
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
+
+interface Event {
+  start: string | number | Date;
+  id: string;
+  title: string;
+  date: string; // ISO date format
+  description: string;
+}
+
+function safeDate(dateInput: string | number | Date): string {
+  let date: Date;
+
+  if (typeof dateInput === "string" || typeof dateInput === "number") {
+    date = new Date(dateInput);
+  } else if (dateInput instanceof Date) {
+    date = dateInput;
+  } else {
+    console.error("Invalid date input type:", typeof dateInput);
+    return ''; // Return an empty string or another appropriate value
+  }
+  
+  if (isNaN(date.getTime())) {
+    // Handle invalid date format
+    console.error("Invalid date format:", dateInput);
+    return ''; // Return an empty string or another appropriate value
+  }
+
+  return date.toISOString(); // Convert the Date object to an ISO formatted string
+}
 
 export default function EventsPage() {
-  const [events, setEvents] = useState([]);
-  const [monthlyEvents, setMonthlyEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [monthlyEvents, setMonthlyEvents] = useState<Event[]>([]);
   const [currentMonth, setCurrentMonth] = useState(moment().month());
   const [isMobile, setIsMobile] = useState(false);
 
@@ -23,10 +53,10 @@ export default function EventsPage() {
       setIsMobile(window.innerWidth <= 768); // Example breakpoint for mobile
     };
 
-    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
     checkScreenSize(); // Initial check
 
-    return () => window.removeEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   useEffect(() => {
@@ -34,17 +64,35 @@ export default function EventsPage() {
       try {
         const response = await fetch("http://127.0.0.1:1337/api/events");
         const data = await response.json();
-        const adjustedData = data.data.map((event) => ({
-          id: event.id,
-          title: event.title,
-          start: new Date(event.date),
-          description: event.description,
-          allDay: false, // set to true if your event spans the whole day
-        }));
-        adjustedData.sort((a, b) => new Date(a.start) - new Date(b.start));
-/*         const upcomingEvents = adjustedData.filter(
+        const adjustedData: Event[] = data.data.map(
+          (event: {
+            id: string;
+            title: string;
+            date: string | number | Date;
+            description: string;
+          }) => ({
+            id: event.id,
+            title: event.title,
+            start: safeDate(event.date),
+            description: event.description,
+            allDay: false, // set to true if your event spans the whole day
+          })
+        );
+        const currentMonth = 0;
+        adjustedData.sort((a, b) => {
+          const dateA = a.start;
+          const dateB = b.start;
+
+          // Check if both dates are valid
+          if (!moment(dateA).isValid() || !moment(dateB).isValid()) {
+            return 0; // Treat invalid dates as equal for sorting purposes
+          }
+
+          return moment(dateA).valueOf() - moment(dateB).valueOf();
+        });
+        /*         const upcomingEvents = adjustedData.filter(
           (event) => new Date(event.start) > new Date()
-        );  */// To set calendar to show future events, and remove any past events
+        );  */ // To set calendar to show future events, and remove any past events
         setEvents(adjustedData);
 
         updateMonthlyEvents(adjustedData, currentMonth);
@@ -55,14 +103,14 @@ export default function EventsPage() {
     fetchEvents();
   }, []);
 
-  const updateMonthlyEvents = (eventData, month) => {
+  const updateMonthlyEvents = (eventData: Event[], month: number) => {
     const filteredEvents = eventData.filter(
       (event) => moment(event.start).month() === month
     );
     setMonthlyEvents(filteredEvents);
   };
 
-  const handleDatesSet = (rangeInfo) => {
+  const handleDatesSet = (rangeInfo: DatesSetArg) => {
     const newMonth = moment(rangeInfo.view.currentStart).month();
     setCurrentMonth(newMonth);
     updateMonthlyEvents(events, newMonth);
@@ -70,36 +118,47 @@ export default function EventsPage() {
 
   const currentMonthName = moment().month(currentMonth).format("MMMM");
 
-  const renderEventContent = (event) => {
+  const renderEventContent = ({ event }: {event: Event}) => {
     if (isMobile) {
       return (
-        ({ event }) => (
-          <span id="event-span" style={{ fontSize: "10px", background:'#d1cdba', width: "100%", padding: "8px", overflow: "hidden", 
+        <span
+          id="event-span"
+          style={{
+            fontSize: "10px",
+            background: "#d1cdba",
+            width: "100%",
+            padding: "8px",
+            overflow: "hidden",
             whiteSpace: "normal", // Allows text to wrap
-            borderRadius: "4px"
-          }}>
-            <strong>{event.title}</strong>
-            <br />
-            {moment(event.start).format("h:mm A")}
-          </span>
-        )
-      );
-    }
-    return (
-      ({ event }) => (
-        <span id="event-span" style={{ fontSize: "12px", background:'#d1cdba', width: "100%", padding: "8px", overflow: "hidden", 
-          whiteSpace: "normal", // Allows text to wrap
-          wordWrap: "break-word", // Breaks long words 
-          borderRadius: "4px"
-        }}>
+            borderRadius: "4px",
+          }}
+        >
           <strong>{event.title}</strong>
           <br />
           {moment(event.start).format("h:mm A")}
         </span>
-      )
+      );
+    }
+    return (
+      <span
+        id="event-span"
+        style={{
+          fontSize: "12px",
+          background: "#d1cdba",
+          width: "100%",
+          padding: "8px",
+          overflow: "hidden",
+          whiteSpace: "normal", // Allows text to wrap
+          wordWrap: "break-word", // Breaks long words
+          borderRadius: "4px",
+        }}
+      >
+        <strong>{event.title}</strong>
+        <br />
+        {moment(event.start).format("h:mm A")}
+      </span>
     );
   }; // for mobile responsiveness of calendar
-
 
   return (
     <div className="flex min-h-screen flex-col items-center">
@@ -120,12 +179,12 @@ export default function EventsPage() {
               <FullCalendar
                 headerToolbar={{
                   start: "title",
-                  end: "today prev next"
+                  end: "today prev next",
                 }}
                 eventTimeFormat={{
-                  hour: 'numeric',
-                  minute: '2-digit',
-                  meridiem: 'short'
+                  hour: "numeric",
+                  minute: "2-digit",
+                  meridiem: "short",
                 }}
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
@@ -136,7 +195,7 @@ export default function EventsPage() {
               />
               <div className="w-full mt-0">
                 <h2 className="text-2xl font-semibold mb-4 text-decoration-line: underline">
-                  What's happening in {currentMonthName}
+                  What&apoas;s happening in {currentMonthName}
                 </h2>
                 <ul className="space-y-4">
                   {monthlyEvents.map((event) => (
@@ -148,7 +207,9 @@ export default function EventsPage() {
                       <div className="flex gap-1">
                         <Clock className="w-5 h-6"></Clock>
                         <p>
-                          {moment(event.start).format("MMMM Do, YYYY [at] h:mm A")}
+                          {moment(event.start).format(
+                            "MMMM Do, YYYY [at] h:mm A"
+                          )}
                         </p>
                       </div>
                       <p>{event.description}</p>
@@ -164,3 +225,5 @@ export default function EventsPage() {
     </div>
   );
 }
+
+EventsPage.displayName = "EventsPage";

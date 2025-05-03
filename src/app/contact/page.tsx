@@ -26,14 +26,14 @@ export default function ContactPage() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
+    const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     const emailSent = await sendEmail(formData);
 
@@ -60,7 +60,7 @@ export default function ContactPage() {
                   Contact Us
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-                  We'd love to hear from you. Reach out with any questions or
+                  We&apoas;d love to hear from you. Reach out with any questions or
                   prayer requests.
                 </p>
               </div>
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold">Get in Touch</h2>
                   <p className="text-gray-500">
-                    Send us a message and we'll get back to you as soon as
+                    Send us a message and we&apoas;ll get back to you as soon as
                     possible.
                   </p>
                 </div>

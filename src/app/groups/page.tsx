@@ -12,6 +12,8 @@ import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
 import { useState, useEffect } from "react";
 
+import Image from "next/image";
+
 interface Group {
   id: number;
   documentId: string;
@@ -36,7 +38,7 @@ interface Group {
               hash: string;
               ext: string;
               mime: string;
-              path: any;
+              path: string;
               width: number;
               height: number;
               size: number;
@@ -49,14 +51,14 @@ interface Group {
       mime: string;
       size: number;
       url: string;
-      previewUrl: any;
+      previewUrl: string;
       provider: string;
-      provider_metadata: any;
+      provider_metadata: string;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
   };
-}
+} 
 
 export default function GroupsPage() {
   const [groups, setGroups] = useState([]);
@@ -66,7 +68,7 @@ export default function GroupsPage() {
       try {
         const response = await fetch("http://localhost:1337/api/groups?populate=Icon");
         const data = await response.json();
-        const adjustedData = data.data.map((group) => ({
+        const adjustedData = data.data.map((group: Group) => ({
           name: group.Name,
           description: group.Description,
           schedule: group.Schedule,
@@ -103,7 +105,12 @@ export default function GroupsPage() {
                 {groups.map((group, index) => (
                   <Card key={index} className="border-2 border-black-600 border-[#d1cdba]">
                     <CardHeader className="flex flex-col items-center">
-                      <img className="h-10 w-10 text-slate-700" src={`http://localhost:1337${groups[index].icon}`} alt="" />
+                    <Image
+                        src={`http://localhost:1337${group.icon}`}
+                        alt={group.name}
+                        width={50}
+                        height={50}
+                      />
                       <CardTitle>{group.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center">

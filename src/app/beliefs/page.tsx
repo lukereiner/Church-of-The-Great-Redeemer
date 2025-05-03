@@ -1,7 +1,7 @@
 "use client";
 
 import { Users } from "lucide-react";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import {
   TbBuildingChurch,
   TbCross,
@@ -15,7 +15,6 @@ import { SiteFooter } from "@/components/footer";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";

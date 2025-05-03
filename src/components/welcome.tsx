@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 
@@ -20,8 +21,8 @@ export function WelcomeSection() {
           </div>
         </div>
         <div className="mx-auto overflow-hidden rounded-xl">
-          <img
-            src="../assets/home/cross2.jpg"
+          <Image
+            src="/assets/home/cross2.jpg"
             alt="Church sanctuary with stained glass windows"
             width={700}
             height={550}

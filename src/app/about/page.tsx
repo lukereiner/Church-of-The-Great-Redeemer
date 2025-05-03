@@ -1,13 +1,7 @@
-import { BookOpen, Heart, Users } from "lucide-react";
 import { BeliefsSection } from "@/components/beliefs";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import Image from "next/image";
+
 import { Separator } from "@/components/ui/separator";
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
@@ -30,8 +24,8 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="mx-auto overflow-hidden rounded-xl">
-              <img
-                src="../assets/about/about1.jpg"
+              <Image
+                src="/assets/about/about1.jpg"
                 alt="Historic church building"
                 width={700}
                 height={550}
@@ -51,13 +45,12 @@ export default function AboutPage() {
                 <p className="text-gray-500">
                   The Church of The Great Redeemer (CGR) originated from a group
                   of Christians who, following the 2024 UMC General Conference,
-                  left the United Methodist denomination due to
-                  differences in their faith and mission. CGR seeks to worship
-                  God in spirit and truth (John 4:24), abide by His Word, and
-                  grow in love and holiness. As a faithful remnant of the
-                  Christian community, CGR remains committed to upholding the
-                  Word of God as our standard of living, rather than following
-                  cultural trends.
+                  left the United Methodist denomination due to differences in
+                  their faith and mission. CGR seeks to worship God in spirit
+                  and truth (John 4:24), abide by His Word, and grow in love and
+                  holiness. As a faithful remnant of the Christian community,
+                  CGR remains committed to upholding the Word of God as our
+                  standard of living, rather than following cultural trends.
                 </p>
                 <p className="text-gray-500">
                   CGR stands firm in its commitment to cling to biblical
@@ -79,8 +72,8 @@ export default function AboutPage() {
               <div className="grid gap-4">
                 <div className="grid gap-4 md:grid-cols-2 md:gap-x-4">
                   <div className="overflow-hidden rounded-xl">
-                    <img
-                      src="../assets/about/about3.1.jpg"
+                    <Image
+                      src="/assets/about/about3.1.jpg"
                       alt="Church in a school gymnasium"
                       width={400}
                       height={300}
@@ -88,8 +81,8 @@ export default function AboutPage() {
                     />
                   </div>
                   <div className="overflow-hidden rounded-xl">
-                    <img
-                      src="../assets/about/about4.jpg"
+                    <Image
+                      src="/assets/about/about4.jpg"
                       alt="Church in a local fitness center"
                       width={400}
                       height={300}
@@ -99,8 +92,8 @@ export default function AboutPage() {
                 </div>
 
                 <div className="overflow-hidden rounded-xl">
-                  <img
-                    src="../assets/about/about2.jpg"
+                  <Image
+                    src="/assets/about/about2.jpg"
                     alt="CGR celebration on new beginnings"
                     width={400}
                     height={300}
@@ -112,49 +105,58 @@ export default function AboutPage() {
           </div>
         </section>
         <section className="w-full bg-[#d1cdba]/15 py-12 md:py-16 lg:py-20">
-  <div className="container px-4 md:px-6">
-    <div className="flex flex-col items-center justify-center space-y-8 text-center">
-      <div className="space-y-2">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-          Our Leadership
-        </h2>
-        <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-          Meet our pastor who guides our church community.
-        </p>
-      </div>
-      <div className="w-full max-w-sm">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-8 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Our Leadership
+                </h2>
+                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
+                  Meet our pastor who guides our church community.
+                </p>
+              </div>
+              <div className="w-full max-w-sm">
                 <Separator className="my-0" />
               </div>
-      <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2 items-center justify-center">
-        <div className="flex flex-col space-y-4">
-          <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
-            Pastor Dan currently serves two congregations, Church of the Great Redeemer of Weatherly and Grace St. Paul's of Jim Thorpe.
-          </p>
+              <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2 items-center justify-center">
+                <div className="flex flex-col space-y-4">
+                  <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
+                    Pastor Dan currently serves two congregations, Church of the
+                    Great Redeemer of Weatherly and Grace St. Paul&apos;s of Jim
+                    Thorpe.
+                  </p>
 
-          <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
-            Pastor Dan experienced his call to ministry at a young age in 2017. Like many individuals in the Bible, he resisted that calling at first but realized how blessed he is to be able to serve the Lord through his ministry.
-          </p>
+                  <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
+                    Pastor Dan experienced his call to ministry at a young age
+                    in 2017. Like many individuals in the Bible, he resisted
+                    that calling at first but realized how blessed he is to be
+                    able to serve the Lord through his ministry.
+                  </p>
 
-          <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
-            Pastor Dan enjoys experiencing nature, fly fishing and spending time with his family. He resides with his supporting wife and three children in Jim Thorpe.
-          </p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <div className="overflow-hidden rounded-full">
-            <img
-              src="../assets/about/dan-portrait2.png"
-              alt="Pastor Daniel Meader"
-              width={250}
-              height={250}
-              className="aspect-square object-cover"
-            />
+                  <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
+                    Pastor Dan enjoys experiencing nature, fly fishing and
+                    spending time with his family. He resides with his
+                    supporting wife and three children in Jim Thorpe.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <div className="overflow-hidden rounded-full">
+                    <Image
+                      src="/assets/about/dan-portrait2.png"
+                      alt="Pastor Daniel Meader"
+                      width={250}
+                      height={250}
+                      className="aspect-square object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold mt-4">
+                    Pastor Daniel Meader
+                  </h3>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 className="text-xl font-bold mt-4">Pastor Daniel Meader</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
       </main>
       <SiteFooter />
     </div>
