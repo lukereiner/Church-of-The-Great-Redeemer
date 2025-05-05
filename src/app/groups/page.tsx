@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Card,
@@ -24,56 +24,58 @@ interface Group {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  Icon?: {
-      id: number;
-      documentId: string;
-      name: string;
-      alternativeText: string;
-      caption: string;
-      width: number;
-      height: number;
-      formats: {
-          thumbnail: {
-              name: string;
-              hash: string;
-              ext: string;
-              mime: string;
-              path: string;
-              width: number;
-              height: number;
-              size: number;
-              sizeInBytes: number;
-              url: string;
-          };
+  Icon: {
+    id: number;
+    documentId: string;
+    name: string;
+    alternativeText: string;
+    caption: string;
+    width: number;
+    height: number;
+    formats: {
+      thumbnail: {
+        name: string;
+        hash: string;
+        ext: string;
+        mime: string;
+        path: string;
+        width: number;
+        height: number;
+        size: number;
+        sizeInBytes: number;
+        url: string;
       };
-      hash: string;
-      ext: string;
-      mime: string;
-      size: number;
-      url: string;
-      previewUrl: string;
-      provider: string;
-      provider_metadata: string;
-      createdAt: string;
-      updatedAt: string;
-      publishedAt: string;
+    };
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string;
+    provider: string;
+    provider_metadata: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   };
-} 
+}
 
 export default function GroupsPage() {
-  const [groups, setGroups] = useState([]);
+  const [groups, setGroups] = useState<Group[]>([]);
 
   useEffect(() => {
     async function fetchGroups() {
       try {
-        const response = await fetch("http://localhost:1337/api/groups?populate=Icon");
+        const response = await fetch(
+          "http://localhost:1337/api/groups?populate=Icon"
+        );
         const data = await response.json();
         const adjustedData = data.data.map((group: Group) => ({
-          name: group.Name,
-          description: group.Description,
-          schedule: group.Schedule,
-          location: group.Location,
-          icon: group.Icon.url
+          Name: group.Name,
+          Description: group.Description,
+          Schedule: group.Schedule,
+          Location: group.Location,
+          Icon: group.Icon.url,
         }));
         setGroups(adjustedData);
       } catch (error) {
@@ -103,22 +105,31 @@ export default function GroupsPage() {
               </div>
               <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {groups.map((group, index) => (
-                  <Card key={index} className="border-2 border-black-600 border-[#d1cdba]">
+                  <Card
+                    key={index}
+                    className="border-2 border-black-600 border-[#d1cdba]"
+                  >
                     <CardHeader className="flex flex-col items-center">
-                    <Image
-                        src={`http://localhost:1337${group.icon}`}
-                        alt={group.name}
+                      <Image
+                        src={`http://localhost:1337${group.Icon}`}
+                        alt={group.Name}
                         width={50}
                         height={50}
                       />
-                      <CardTitle>{group.name}</CardTitle>
+                      <CardTitle>{group.Name}</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center">
-                      <CardDescription className="font-semibold">{group.description}</CardDescription>
+                      <CardDescription className="font-semibold">
+                        {group.Description}
+                      </CardDescription>
                     </CardContent>
                     <CardContent className="mt-auto text-center">
-                      <CardDescription className="">{group.schedule}</CardDescription>
-                      <CardDescription className="">{group.location}</CardDescription>
+                      <CardDescription className="">
+                        {group.Schedule}
+                      </CardDescription>
+                      <CardDescription className="">
+                        {group.Location}
+                      </CardDescription>
                     </CardContent>
                   </Card>
                 ))}

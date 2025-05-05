@@ -9,8 +9,16 @@ import moment from "moment";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
+interface Event {
+  id: number;
+  title: string;
+  date: string;
+  time: Date;
+  description: string;
+}
+
 export function EventsSection() {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
@@ -36,7 +44,7 @@ export function EventsSection() {
       try {
         const response = await fetch("http://127.0.0.1:1337/api/events");
         const data = await response.json();
-        const adjustedData = data.data.map((event) => ({
+        const adjustedData = data.data.map((event: Event) => ({
           id: event.id,
           title: event.title,
           date: new Date(event.date).toLocaleDateString(),
@@ -44,9 +52,9 @@ export function EventsSection() {
           description: event.description,
           allDay: false, // set to true if your event spans the whole day
         }));
-        adjustedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+        adjustedData.sort((a: Event, b: Event) => new Date(a.date).getTime() - new Date(b.date).getTime());
         const currentDate = new Date();
-        const upcomingEvents = adjustedData.filter(event => new Date(event.date) > currentDate);
+        const upcomingEvents = adjustedData.filter((event: Event) => new Date(event.date) > currentDate);
         setEvents(upcomingEvents);
       } catch (error) {
         console.error("Error fetching events:", error);

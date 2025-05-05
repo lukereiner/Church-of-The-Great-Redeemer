@@ -9,11 +9,7 @@ interface Photo {
   id: number;
   title: string;
   image: Array<{
-    formats: {
-      medium: {
-        url: string;
-      };
-    };
+    url: string;
   }>;
 }
 

@@ -12,7 +12,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 
-/* interface Group {
+interface Group {
   id: number;
   documentId: string;
   Name: string;
@@ -36,7 +36,7 @@ import { useState, useEffect } from "react";
               hash: string;
               ext: string;
               mime: string;
-              path: any;
+              path: string;
               width: number;
               height: number;
               size: number;
@@ -49,31 +49,31 @@ import { useState, useEffect } from "react";
       mime: string;
       size: number;
       url: string;
-      previewUrl: any;
+      previewUrl: string;
       provider: string;
-      provider_metadata: any;
+      provider_metadata: string;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
   };
-} */
+}
 
 
 export function GroupsSection() {
 
-const [groups, setGroups] = useState([]);
+const [groups, setGroups] = useState<Group[]>([]);
 
   useEffect(() => {
     async function fetchGroups() {
       try {
         const response = await fetch("http://localhost:1337/api/groups?populate=Icon");
         const data = await response.json();
-        const adjustedData = data.data.map((group) => ({
-          name: group.Name,
-          description: group.Description,
-          schedule: group.Schedule,
-          location: group.Location,
-          icon: group.Icon.url
+        const adjustedData = data.data.map((group: Group) => ({
+          Name: group.Name,
+          Description: group.Description,
+          Schedule: group.Schedule,
+          Location: group.Location,
+          Icon: group.Icon?.url,
         }));
         setGroups(adjustedData);
       } catch (error) {
@@ -105,20 +105,19 @@ const [groups, setGroups] = useState([]);
                   <Card key={index} className="border-2 border-black-600 border-[#d1cdba]">
                     <CardHeader className="flex flex-col items-center">
                     <Image
-                      src={`http://localhost:1337${group.icon}`}
-                      alt={group.name}
+                      src={`http://localhost:1337${group.Icon}`}
+                      alt={group.Name}
                       width={50} // Provide a specific width
                       height={50} // Provide a specific height
                     />
-                      <CardTitle>{group.name}</CardTitle>
+                      <CardTitle>{group.Name}</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center">
-                      <CardDescription>{group.description}</CardDescription>
-                      <p className="mt-2 text-gray-500">{group.meetingInfo}</p>
+                      <CardDescription>{group.Description}</CardDescription>
                     </CardContent>
                     <CardContent className="mt-auto text-center">
-                      <CardDescription>{group.schedule}</CardDescription>
-                      <CardDescription>{group.location}</CardDescription>
+                      <CardDescription>{group.Schedule}</CardDescription>
+                      <CardDescription>{group.Location}</CardDescription>
                     </CardContent>
                   </Card>
                 ))}
