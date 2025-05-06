@@ -66,7 +66,7 @@ export default function BeliefsPage() {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
-      <main className="flex-1">
+      <main className="flex-1 max-w-7xl">
         <section className="w-full py-18 md:py-20 lg:py-28">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
             <div className="space-y-4">
@@ -74,7 +74,7 @@ export default function BeliefsPage() {
                 What We Believe
               </h1>
               <p className="max-w-[600px] text-gray-500 md:text-xl">
-                At the Church of the Great Redeemer, we hold four core beliefs
+                At the Church of The Great Redeemer, we hold four core beliefs
                 that guide our daily lives and decision-making.
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function BeliefsPage() {
         </section>
 
         <section className="w-full mb-12">
-          <div className="container px-4 md:px-6 grid gap-10 lg:grid-cols-1">
+          <div className="container px-4 md:px-6 grid gap-10 md:grid-cols-2 lg:grid-cols-2">
             {beliefs.map((belief, index) => (
               <Card
                 key={index}

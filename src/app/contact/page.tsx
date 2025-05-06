@@ -60,7 +60,7 @@ export default function ContactPage() {
                   Contact Us
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-                  We&apoas;d love to hear from you. Reach out with any questions or
+                  We&apos;d love to hear from you. Reach out with any questions or
                   prayer requests.
                 </p>
               </div>
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold">Get in Touch</h2>
                   <p className="text-gray-500">
-                    Send us a message and we&apoas;ll get back to you as soon as
+                    Send us a message and we&apos;ll get back to you as soon as
                     possible.
                   </p>
                 </div>

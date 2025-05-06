@@ -34,12 +34,11 @@ function safeDate(dateInput: string | number | Date): string {
   }
   
   if (isNaN(date.getTime())) {
-    // Handle invalid date format
     console.error("Invalid date format:", dateInput);
     return ''; // Return an empty string or another appropriate value
   }
 
-  return date.toISOString(); // Convert the Date object to an ISO formatted string
+  return date.toISOString();
 }
 
 export default function EventsPage() {
@@ -50,11 +49,11 @@ export default function EventsPage() {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768); // Example breakpoint for mobile
+      setIsMobile(window.innerWidth <= 768);
     };
 
     window.addEventListener("resize", checkScreenSize);
-    checkScreenSize(); // Initial check
+    checkScreenSize();
 
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
@@ -75,33 +74,28 @@ export default function EventsPage() {
             title: event.title,
             start: safeDate(event.date),
             description: event.description,
-            allDay: false, // set to true if your event spans the whole day
+            allDay: false,
           })
         );
-        const currentMonth = 0;
         adjustedData.sort((a, b) => {
           const dateA = a.start;
           const dateB = b.start;
 
-          // Check if both dates are valid
           if (!moment(dateA).isValid() || !moment(dateB).isValid()) {
-            return 0; // Treat invalid dates as equal for sorting purposes
+            return 0;
           }
 
           return moment(dateA).valueOf() - moment(dateB).valueOf();
         });
-        /*         const upcomingEvents = adjustedData.filter(
-          (event) => new Date(event.start) > new Date()
-        );  */ // To set calendar to show future events, and remove any past events
-        setEvents(adjustedData);
 
+        setEvents(adjustedData);
         updateMonthlyEvents(adjustedData, currentMonth);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
     }
     fetchEvents();
-  }, []);
+  }, [currentMonth]);
 
   const updateMonthlyEvents = (eventData: Event[], month: number) => {
     const filteredEvents = eventData.filter(
@@ -129,7 +123,7 @@ export default function EventsPage() {
             width: "100%",
             padding: "8px",
             overflow: "hidden",
-            whiteSpace: "normal", // Allows text to wrap
+            whiteSpace: "normal",
             borderRadius: "4px",
           }}
         >
@@ -148,8 +142,8 @@ export default function EventsPage() {
           width: "100%",
           padding: "8px",
           overflow: "hidden",
-          whiteSpace: "normal", // Allows text to wrap
-          wordWrap: "break-word", // Breaks long words
+          whiteSpace: "normal",
+          wordWrap: "break-word",
           borderRadius: "4px",
         }}
       >
@@ -158,12 +152,12 @@ export default function EventsPage() {
         {moment(event.start).format("h:mm A")}
       </span>
     );
-  }; // for mobile responsiveness of calendar
+  };
 
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
-      <main className="flex-1">
+      <main className="flex-1 max-w-7xl">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
@@ -193,20 +187,20 @@ export default function EventsPage() {
                 datesSet={handleDatesSet}
                 eventContent={renderEventContent}
               />
-              <div className="w-full mt-0">
-                <h2 className="text-2xl font-semibold mb-4 text-decoration-line: underline">
-                  What&apoas;s happening in {currentMonthName}
+              <div className="flex flex-col w-full max-w-2xl items-center">
+                <h2 className="text-2xl font-semibold mb-8">
+                  What&apos;s happening in {currentMonthName}
                 </h2>
                 <ul className="space-y-4">
                   {monthlyEvents.map((event) => (
                     <li key={event.id} className="text-left">
-                      <div className="flex gap-1 items-center">
+                      <div className="flex gap-1 items-center text-decoration-line: underline">
                         <ReactCal className="w-5 h-6"></ReactCal>
                         <strong>{event.title}</strong>
                       </div>
                       <div className="flex gap-1">
                         <Clock className="w-5 h-6"></Clock>
-                        <p>
+                        <p className="font-medium">
                           {moment(event.start).format(
                             "MMMM Do, YYYY [at] h:mm A"
                           )}

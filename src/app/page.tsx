@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
-      <main className="flex-1">
+      <main className="flex-1 max-w-7xl">
         <WelcomeSection />
         <section className="w-full bg-[#d1cdba]/15 py-12 md:py-16 lg:py-20">
           <div className="container px-4 md:px-6">
@@ -36,7 +36,7 @@ export default function Home() {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-center space-x-2">
                       <Calendar className="h-6 w-6 text-slate-700" />
-                      <p className="font-medium text-lg">Sunday Service</p>
+                      <p className="font-medium">Sunday Service</p>
                     </div>
                     <p className="mt-2 text-gray-500">9:00 AM</p>
                   </CardContent>
@@ -45,9 +45,9 @@ export default function Home() {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-center space-x-2">
                       <MapPin className="h-6 w-6 text-slate-700" />
-                      <p className="font-medium text-lg">Location</p>
+                      <p className="font-medium">Location</p>
                     </div>
-                    <p className="mt-2  text-gray-500">
+                    <p className="mt-2 text-gray-500">
                       464 High St, Weatherly, PA 18255
                     </p>
                   </CardContent>

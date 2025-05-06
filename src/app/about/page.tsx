@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
-      <main className="flex-1">
+      <main className="flex-1 max-w-7xl">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
             <div className="space-y-4">
@@ -25,7 +25,7 @@ export default function AboutPage() {
             </div>
             <div className="mx-auto overflow-hidden rounded-xl">
               <Image
-                src="/assets/about/about1.jpg"
+                src="/about1.JPG"
                 alt="Historic church building"
                 width={700}
                 height={550}
@@ -38,7 +38,7 @@ export default function AboutPage() {
         <section className="w-full py-12 md:py-16 lg:py-20">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2">
-              <div className="space-y-4">
+              <div className="space-y-4 flex flex-col justify-center">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
                   Our History
                 </h2>
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 <div className="grid gap-4 md:grid-cols-2 md:gap-x-4">
                   <div className="overflow-hidden rounded-xl">
                     <Image
-                      src="/assets/about/about3.1.jpg"
+                      src="/about3.1.JPG"
                       alt="Church in a school gymnasium"
                       width={400}
                       height={300}
@@ -82,7 +82,7 @@ export default function AboutPage() {
                   </div>
                   <div className="overflow-hidden rounded-xl">
                     <Image
-                      src="/assets/about/about4.jpg"
+                      src="/about4.JPG"
                       alt="Church in a local fitness center"
                       width={400}
                       height={300}
@@ -93,7 +93,7 @@ export default function AboutPage() {
 
                 <div className="overflow-hidden rounded-xl">
                   <Image
-                    src="/assets/about/about2.jpg"
+                    src="/about2.JPG"
                     alt="CGR celebration on new beginnings"
                     width={400}
                     height={300}
@@ -142,7 +142,7 @@ export default function AboutPage() {
                 <div className="flex flex-col items-center justify-center">
                   <div className="overflow-hidden rounded-full">
                     <Image
-                      src="/assets/about/dan-portrait2.png"
+                      src="/dan-portrait2.png"
                       alt="Pastor Daniel Meader"
                       width={250}
                       height={250}

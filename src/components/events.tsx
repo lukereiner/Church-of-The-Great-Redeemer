@@ -1,13 +1,19 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Calendar } from "lucide-react"
-import { useEffect, useState } from "react"
-import { Separator } from "./ui/separator"
+import Link from "next/link";
+import { Calendar } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Separator } from "./ui/separator";
 import moment from "moment";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface Event {
   id: number;
@@ -24,18 +30,18 @@ export function EventsSection() {
   useEffect(() => {
     // Function to update screen size
     const updateScreenSize = () => {
-      setIsSmallScreen(window.matchMedia('(max-width: 768px)').matches);
+      setIsSmallScreen(window.matchMedia("(max-width: 768px)").matches);
     };
 
     // Initial check
     updateScreenSize();
 
     // Add event listener
-    window.addEventListener('resize', updateScreenSize);
+    window.addEventListener("resize", updateScreenSize);
 
     // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener('resize', updateScreenSize);
+      window.removeEventListener("resize", updateScreenSize);
     };
   }, []);
 
@@ -52,9 +58,14 @@ export function EventsSection() {
           description: event.description,
           allDay: false, // set to true if your event spans the whole day
         }));
-        adjustedData.sort((a: Event, b: Event) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        adjustedData.sort(
+          (a: Event, b: Event) =>
+            new Date(a.date).getTime() - new Date(b.date).getTime()
+        );
         const currentDate = new Date();
-        const upcomingEvents = adjustedData.filter((event: Event) => new Date(event.date) > currentDate);
+        const upcomingEvents = adjustedData.filter(
+          (event: Event) => new Date(event.date) > currentDate
+        );
         setEvents(upcomingEvents);
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -64,27 +75,36 @@ export function EventsSection() {
   }, []);
 
   return (
-<section className="w-full py-12 md:py-16 lg:py-20">
+    <section className="w-full py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6 grid">
         <div className="flex flex-col items-center justify-center space-y-4 text-center shrink-2">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Upcoming Events</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Upcoming Events
+            </h2>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
               Join us for these special events and activities.
             </p>
           </div>
           <div className="w-full max-w-sm">
-                <Separator className="my-4" />
-              </div>
+            <Separator className="my-4" />
+          </div>
           <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {events.slice(0, isSmallScreen ? 3 : 6).map((event) => (
-              <Card key={event.title} className="flex flex-col border-2 border-black-600 border-[#d1cdba]">
+            {events.slice(0, isSmallScreen ? 3 : 3).map((event) => (
+              <Card
+                key={event.title}
+                className="flex flex-col border-2 border-black-600 border-[#d1cdba]"
+              >
                 <CardHeader>
                   <div className="flex items-center gap-2 text-slate-700">
                     <Calendar className="h-5 w-5" />
-                    <CardDescription>{event.date} at {moment(event.time).format("h:mm A")}</CardDescription>
+                    <CardDescription>
+                      {event.date} at {moment(event.time).format("h:mm A")}
+                    </CardDescription>
                   </div>
-                  <CardTitle className="line-clamp-1 h-5">{event.title}</CardTitle>
+                  <CardTitle className="line-clamp-1 h-5 mt-2">
+                    {event.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1 line-clamp-3 md:text-left sm:text-center">
                   <p className="text-gray-500 text-sm">{event.description}</p>
@@ -101,4 +121,4 @@ export function EventsSection() {
       </div>
     </section>
   );
-};
+}

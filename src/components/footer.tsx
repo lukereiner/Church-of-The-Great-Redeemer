@@ -13,7 +13,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-2">
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="/assets/footer-avatar.png" // Adjust the path as needed
+              src="/footer-avatar.png" // Adjust the path as needed
               alt=""
               width={50} // Provide a specific width
               height={50} // Provide a specific height
@@ -88,7 +88,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="grid gap-2">
-          <h3 className="text-lg font-medium">Newsletter</h3>
+          <h3 className="text-lg font-medium">Stay Informed</h3>
           <p className="text-sm text-gray-500">
             Subscribe to receive updates and announcements.
           </p>

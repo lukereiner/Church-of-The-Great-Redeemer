@@ -100,7 +100,7 @@ const [groups, setGroups] = useState<Group[]>([]);
               <div className="w-full max-w-sm">
                 <Separator className="my-4" />
               </div>
-              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl">
                 {groups.map((group, index) => (
                   <Card key={index} className="border-2 border-black-600 border-[#d1cdba]">
                     <CardHeader className="flex flex-col items-center">
@@ -112,12 +112,12 @@ const [groups, setGroups] = useState<Group[]>([]);
                     />
                       <CardTitle>{group.Name}</CardTitle>
                     </CardHeader>
-                    <CardContent className="text-center">
+                    <CardContent className="text-center font-semibold">
                       <CardDescription>{group.Description}</CardDescription>
                     </CardContent>
                     <CardContent className="mt-auto text-center">
                       <CardDescription>{group.Schedule}</CardDescription>
-                      <CardDescription>{group.Location}</CardDescription>
+                      <CardDescription>Host: {group.Location}</CardDescription>
                     </CardContent>
                   </Card>
                 ))}

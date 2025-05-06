@@ -32,10 +32,11 @@ const PhotoCarousel: React.FC = () => {
   return (
     <div> 
       <Carousel
-        showArrows={false}
+        showArrows={true}
         autoPlay={true}
         infiniteLoop={true}
         showThumbs={false}
+        showIndicators={false}
         showStatus={false}
         interval={3000} // Adjust the speed of auto cycle
         dynamicHeight={true}

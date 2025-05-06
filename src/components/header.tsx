@@ -16,10 +16,10 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center px-4 sm:px-6">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Image
-            src="/assets/home/avatar.png" // Adjust the path as needed
+            src="/avatar.png"
             alt="Church of The Great Redeemer"
-            width={36} // Provide a specific width (36 pixels for 9x9)
-            height={36} // Provide a specific height (36 pixels for 9x9)
+            width={36}
+            height={36}
           />
           <span className="hidden font-roboto text-xl font-bold sm:inline-block text-[#d1cdba]">
             Church of The Great Redeemer

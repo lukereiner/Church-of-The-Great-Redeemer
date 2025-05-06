@@ -88,7 +88,7 @@ export default function GroupsPage() {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
-      <main className="flex-1">
+      <main className="flex-1 max-w-7xl">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
@@ -103,7 +103,7 @@ export default function GroupsPage() {
               <div className="w-full max-w-3xl">
                 <Separator className="my-4" />
               </div>
-              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-5xl">
                 {groups.map((group, index) => (
                   <Card
                     key={index}
@@ -128,7 +128,7 @@ export default function GroupsPage() {
                         {group.Schedule}
                       </CardDescription>
                       <CardDescription className="">
-                        {group.Location}
+                        Host: {group.Location}
                       </CardDescription>
                     </CardContent>
                   </Card>
