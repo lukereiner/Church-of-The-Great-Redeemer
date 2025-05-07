@@ -11,9 +11,11 @@ export async function POST(req: NextRequest) {
 
     try {
         const body = await req.json();
-        const { name, message, email, subject } = body;
-
-        const response = await resend.emails.send({
+        const { formType } = body;
+    
+        if (formType === 'contact') {
+          const { name, message, email, subject } = body;
+          const response = await resend.emails.send({
             from: 'contact@greatredeemerchurch.org',
             to: 'lukereiner@greatredeemerchurch.org',
             subject: subject,
@@ -22,9 +24,20 @@ export async function POST(req: NextRequest) {
        <p style="line-height: 1.5;">${message}</p>
        <p>Respond at <a href="mailto:${email}?subject=${encodeURIComponent(subject)}">${email}</a></p>
        </div>`,
-        });
+          });
+    
+          return NextResponse.json({ message: 'Email sent', response }, { status: 200 });
+        } else if (formType === 'subscribe') {
+          const { email } = body;
+          const response = await resend.emails.send({
+            from: 'subscribe@greatredeemerchurch.org',
+            to: 'lukereiner@greatredeemerchurch.org',
+            subject: 'New Subscription',
+            html: `<p><strong>${email}</strong> has subscribed to the newsletter.</p>`,
+          });
 
         return NextResponse.json({ message: 'Email sent', response }, { status: 200 });
+        }
     } catch (error) {
         console.error('Error sending email:', error);
         return NextResponse.json({ message: 'Error sending email', error }, { status: 500 });

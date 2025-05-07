@@ -3,6 +3,7 @@ interface Values {
     subject: string;
     email: string;
     message: string;
+    formType: 'contact' | 'subscribe';
 }
 
 export const sendEmail = async (values: Values) => {

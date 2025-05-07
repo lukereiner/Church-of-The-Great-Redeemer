@@ -68,9 +68,7 @@ export default function Home() {
                 Visit Us
               </h2>
               <p className="max-w-[600px] text-gray-500 md:text-xl">
-                We invite you to join us for worship and fellowship. Our church
-                is located in a peaceful setting where you can connect with God
-                and our community.
+                We invite you to join us for worship and fellowship on Sunday mornings, where Bibles and minds are opened, and God is praised.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2">

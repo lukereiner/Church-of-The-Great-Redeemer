@@ -157,10 +157,10 @@ export default function EventsPage() {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
-      <main className="flex-1 max-w-7xl">
+      <main className="flex-1 max-w-6xl">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-8 text-center">
+            <div className="flex flex-col items-center justify-center space-y-8 text-center max-w-6xl">
               <h1 className="font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-2">
                 Church Events
               </h1>
@@ -183,11 +183,12 @@ export default function EventsPage() {
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 events={events}
+                aspectRatio={1}
                 height="auto"
                 datesSet={handleDatesSet}
                 eventContent={renderEventContent}
               />
-              <div className="flex flex-col w-full max-w-2xl items-center">
+              <div className="flex flex-col w-full max-w-lg items-center">
                 <h2 className="text-2xl font-semibold mb-8">
                   What&apos;s happening in {currentMonthName}
                 </h2>

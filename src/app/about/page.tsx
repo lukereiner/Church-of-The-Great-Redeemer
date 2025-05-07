@@ -130,7 +130,8 @@ export default function AboutPage() {
                     Pastor Dan experienced his call to ministry at a young age
                     in 2017. Like many individuals in the Bible, he resisted
                     that calling at first but realized how blessed he is to be
-                    able to serve the Lord through his ministry.
+                    able to serve the Lord through his ministry. He believes in the need and power of expository preaching to open minds and soften hearts. He makes this his aim every Sunday as he preaches directly from the Word of God. 
+
                   </p>
 
                   <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">

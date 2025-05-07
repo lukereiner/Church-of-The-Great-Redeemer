@@ -13,25 +13,25 @@ export function BeliefsSection() {
       title: "God & Man",
       icon: <TbCross className="h-10 w-10 text-slate-700" />,
       description:
-        "Triune God - Creator - Grace",
+        "A holy God and sinful man, the need for salvation.",
       link: "/beliefs/god-and-man",
     },
     {
       title: "The Word",
       icon: <TbBible className="h-10 w-10 text-slate-700" />,
-      description: "Inspired inerrant Word of God",
+      description: "Inspired, infallible, inerrant, containing all that is needed for life and salvation.",
       link: "/beliefs/the-word",
     },
     {
       title: "Mission & Purpose",
       icon: <TbBuildingChurch className="h-10 w-10 text-slate-700" />,
-      description: "Worship - Love - Discipleship - Commission",
+      description: "To glorify God through our faithful conduct, service, and witness.",
       link: "/beliefs/mission-and-purpose",
     },
     {
       title: "Social Issues",
       icon: <Users className="h-10 w-10 text-slate-700" />,
-      description: "Standard of living per the Word of God",
+      description: "Culture changes, social norms change. God's Word doesn't.",
       link: "/beliefs/social-issues",
     },
   ]

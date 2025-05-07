@@ -98,7 +98,7 @@ const [groups, setGroups] = useState<Group[]>([]);
                 </p>
               </div>
               <div className="w-full max-w-sm">
-                <Separator className="my-4" />
+                <Separator className="my-2" />
               </div>
               <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl">
                 {groups.map((group, index) => (

@@ -68,7 +68,7 @@ export function SiteHeader() {
               href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2"
               target="_blank"
             >
-              Donate
+              Give
             </a>
           </Button>
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -125,7 +125,7 @@ export function SiteHeader() {
                       href="https://www.zeffy.com/en-US/donation-form/4dfe571f-7ca6-469b-811c-30136dccc3f2"
                       target="_blank"
                     >
-                      Donate
+                      Give
                     </a>
                   </Button>
                 </div>

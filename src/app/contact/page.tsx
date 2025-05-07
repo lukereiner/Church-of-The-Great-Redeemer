@@ -35,7 +35,7 @@ export default function ContactPage() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const emailSent = await sendEmail(formData);
+    const emailSent = await sendEmail({ ...formData, formType: 'contact' });
 
     if (emailSent) {
       // Reset form fields
@@ -103,6 +103,7 @@ export default function ContactPage() {
                       required
                     />
                   </div>
+                  <input type="hidden" name="formType" value="contact"/>
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
                     <select

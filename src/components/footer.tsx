@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Youtube } from "lucide-react";
@@ -7,6 +9,28 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
 export function SiteFooter() {
+
+  const handleSubscribeSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const target = event.target as HTMLFormElement;
+    const formData = new FormData(target);
+    const email = formData.get('email');
+  
+    const response = await fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, formType: 'subscribe' }),
+    });
+  
+    if (response.ok) {
+      alert('Subscribed successfully!');
+    } else {
+      console.error('Subscription failed');
+    }
+  };
+
   return (
     <footer className="w-full border-t bg-[#e1e1e1]/15">
       <div className="container grid gap-8 px-4 py-10 md:grid-cols-2 md:px-6 lg:grid-cols-4">
@@ -92,8 +116,9 @@ export function SiteFooter() {
           <p className="text-sm text-gray-500">
             Subscribe to receive updates and announcements.
           </p>
-          <form className="grid gap-2">
-            <Input type="email" placeholder="Email address" />
+          <form className="grid gap-2" onSubmit={handleSubscribeSubmit}>
+            <Input type="email" name="email" placeholder="Email address" required/>
+            <input type="hidden" name="formType" value="subscribe" /> {/* Hidden field for resend differentiation */}
             <Button type="submit">Subscribe</Button>
           </form>
         </div>
