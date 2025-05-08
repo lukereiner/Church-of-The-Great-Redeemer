@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Roboto } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`${playfairDisplay.variable} ${roboto.variable} antialiased`}
       >
         {children}
+        <Toaster richColors/>
       </body>
     </html>
   );

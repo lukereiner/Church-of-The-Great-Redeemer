@@ -6,7 +6,10 @@ interface Values {
     formType: 'contact' | 'subscribe';
 }
 
+import { toast } from "sonner";
+
 export const sendEmail = async (values: Values) => {
+ 
     try {
         const response = await fetch('/api/send', {
             method: 'POST',
@@ -17,7 +20,7 @@ export const sendEmail = async (values: Values) => {
         });
 
         if (response.ok) {
-            alert('Email sent! We will respond as soon as we can!')
+            toast.success("Email sent! We will respond as soon as we can!");
             console.log('Email sent successfully with resend!');
             return true; // Indicate success
         } else {
@@ -26,7 +29,7 @@ export const sendEmail = async (values: Values) => {
             return false; // Indicate failure
         }
     } catch (error) {
-        alert('There was a problem sending the email. Please try emailing us directly at: pastor@greatredeemerchurch.org')
+        toast.error('There was a problem sending the email. Please try emailing us directly at: pastor@greatredeemerchurch.org')
         console.error('There was a problem sending the email:', error);
         return false; // Indicate failure
     }

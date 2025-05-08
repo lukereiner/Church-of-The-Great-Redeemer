@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
+import { toast } from "sonner";
+
 export function SiteFooter() {
 
   const handleSubscribeSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -25,8 +27,9 @@ export function SiteFooter() {
     });
   
     if (response.ok) {
-      alert('Subscribed successfully!');
+      toast.success("Subscribed successfully!")
     } else {
+      toast.error("Subscription failed")
       console.error('Subscription failed');
     }
   };

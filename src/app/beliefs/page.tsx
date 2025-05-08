@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { Users } from "lucide-react"
+import { TbBuildingChurch, TbCross, TbBible } from "react-icons/tb"
 
 import { Separator } from "@/components/ui/separator";
 import { SiteHeader } from "@/components/header";
@@ -29,9 +30,12 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10">
               <div className="space-y-4 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
+                <div className="flex flex-row items-center gap-2">
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
                   God and Man
                 </h2>
+                  <TbCross className="h-8 w-8" />
+                </div>
                 <ol className="ml-4 md:text-lg list-disc text-gray-500">
                   <li>
                   We believe in one God in three persons: Father, Son, and Holy Spirit. Each person is distinct yet unified by their shared divinity
@@ -49,9 +53,12 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10">
               <div className="space-y-4 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
+              <div className="flex flex-row items-center gap-2">
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
                   The Word
                 </h2>
+                  <TbBible className="h-8 w-8" />
+                </div>
                 <ol className="ml-4 md:text-lg list-disc text-gray-500">
                   <li>
                   We hold the Bible as the inspired, infallible, and inerrant word of God, containing all necessary truths for life and salvation. It is the primary rule and authority for faith
@@ -66,9 +73,12 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10">
               <div className="space-y-4 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
+              <div className="flex flex-row items-center gap-2">
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
                   Mission and Purpose
                 </h2>
+                  <TbBuildingChurch className="h-8 w-8" />
+                </div>
                 <p className="text-gray-500 md:text-lg m-0 font-semibold">The Church exists to:</p>
                 <ol className="ml-4 md:text-lg list-disc text-gray-500">
                   <li>
@@ -93,20 +103,23 @@ export default function AboutPage() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10">
               <div className="space-y-4 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
+              <div className="flex flex-row items-center gap-2">
+                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
                   Social Issues
                 </h2>
+                  <Users className="h-8 w-8" />
+                </div>
                 <ol className="ml-4 md:text-lg list-disc text-gray-500">
                 <p className="text-gray-500 md:text-lg m-0 font-semibold mb-2">Marriage</p>
                   <li>
                   We believe that marriage is a sacred union between one man and one woman, defined by Scripture
                   </li>
                   <li>
-                  We acknowledge God's creation of individuals as male or female, which reflects the image and nature of God. Rejection of biological gender is seen as a rejection of this divine image
+                  We acknowledge God&apos;s creation of individuals as male or female, which reflects the image and nature of God. Rejection of biological gender is seen as a rejection of this divine image
                   </li>
                   <p className="text-gray-500 md:text-lg m-0 font-semibold mt-4 my-2">Sanctity of Life</p>
                   <li>
-                  Human life begins at conception, and unborn children are precious in God's eyes, deserving to be valued and protected
+                  Human life begins at conception, and unborn children are precious in God&apos;s eyes, deserving to be valued and protected
                   </li>
                   <li>
                   We believe that intentionally ending a life is not the responsibility of individuals and must be reserved for God alone
