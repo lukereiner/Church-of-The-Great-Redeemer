@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${playfairDisplay.variable} ${roboto.variable} antialiased`}
       >
         {children}
-        <Toaster richColors/>
+        <Toaster />
       </body>
     </html>
   );

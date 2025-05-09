@@ -121,7 +121,7 @@ export default function AboutPage() {
               <div className="grid w-full max-w-5xl gap-6 md:grid-cols-2 items-center justify-center">
                 <div className="flex flex-col space-y-4">
                   <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
-                    Pastor Dan currently serves two congregations, Church of the
+                    Pastor Dan currently serves two congregations, Church of The
                     Great Redeemer of Weatherly and Grace St. Paul&apos;s of Jim
                     Thorpe.
                   </p>
