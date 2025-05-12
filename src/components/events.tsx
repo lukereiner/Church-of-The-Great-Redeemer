@@ -56,15 +56,23 @@ export function EventsSection() {
           date: new Date(event.date).toLocaleDateString(),
           time: new Date(event.date),
           description: event.description,
-          allDay: false, // set to true if your event spans the whole day
+          allDay: false,
         }));
-        adjustedData.sort(
-          (a: Event, b: Event) =>
-            new Date(a.date).getTime() - new Date(b.date).getTime()
-        );
+
+        // Sort by date and time
+        adjustedData.sort((a: Event, b: Event) => {
+          const dateComparison = new Date(a.date).getTime() - new Date(b.date).getTime();
+          if (dateComparison !== 0) {
+            return dateComparison;
+          }
+          return a.time.getTime() - b.time.getTime();
+        });
+
         const currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
+
         const upcomingEvents = adjustedData.filter(
-          (event: Event) => new Date(event.date) > currentDate
+          (event: Event) => new Date(event.date).getTime() >= currentDate.getTime()
         );
         setEvents(upcomingEvents);
       } catch (error) {
