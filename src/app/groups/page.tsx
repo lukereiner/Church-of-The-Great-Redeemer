@@ -67,7 +67,7 @@ export default function GroupsPage() {
     async function fetchGroups() {
       try {
         const response = await fetch(
-          "http://localhost:1337/api/groups?populate=Icon"
+          (process.env.NEXT_PUBLIC_STRAPI_URL as string) + "/api/groups?populate=Icon"
         );
         const data = await response.json();
         const adjustedData = data.data.map((group: Group) => ({
@@ -111,7 +111,7 @@ export default function GroupsPage() {
                   >
                     <CardHeader className="flex flex-col items-center">
                       <Image
-                        src={`http://localhost:1337${group.Icon}`}
+                        src={(process.env.NEXT_PUBLIC_STRAPI_URL as string) + group.Icon}
                         alt={group.Name}
                         width={50}
                         height={50}

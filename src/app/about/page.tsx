@@ -137,7 +137,7 @@ export default function AboutPage() {
                   <p className="text-left mx-auto max-w-[700px] text-gray-500 md:text-base">
                     Pastor Dan enjoys experiencing nature, fly fishing and
                     spending time with his family. He resides with his
-                    supporting wife and three children in Jim Thorpe.
+                    supportive wife and three children in Jim Thorpe.
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">

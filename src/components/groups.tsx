@@ -66,7 +66,7 @@ const [groups, setGroups] = useState<Group[]>([]);
   useEffect(() => {
     async function fetchGroups() {
       try {
-        const response = await fetch("http://localhost:1337/api/groups?populate=Icon");
+        const response = await fetch((process.env.NEXT_PUBLIC_STRAPI_URL as string) + "/api/groups?populate=Icon");
         const data = await response.json();
         const adjustedData = data.data.map((group: Group) => ({
           Name: group.Name,
@@ -105,7 +105,7 @@ const [groups, setGroups] = useState<Group[]>([]);
                   <Card key={index} className="border-2 border-black-600 border-[#d1cdba]">
                     <CardHeader className="flex flex-col items-center">
                     <Image
-                      src={`http://localhost:1337${group.Icon}`}
+                      src={(process.env.NEXT_PUBLIC_STRAPI_URL as string) + group.Icon}
                       alt={group.Name}
                       width={50} // Provide a specific width
                       height={50} // Provide a specific height

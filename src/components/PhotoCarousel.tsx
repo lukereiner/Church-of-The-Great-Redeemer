@@ -19,7 +19,7 @@ const PhotoCarousel: React.FC = () => {
   useEffect(() => {
     async function fetchPhotos() {
       try {
-        const response = await fetch('http://localhost:1337/api/photos?populate=image');
+        const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_URL + '/api/photos?populate=image');
         const data = await response.json();
         setPhotos(data.data);
       } catch (error) {
@@ -44,7 +44,7 @@ const PhotoCarousel: React.FC = () => {
         {photos.map((photo) => (
           <div key={photo.id}>
             <Image
-              src={`http://localhost:1337${photo.image[0].url}`}
+              src={process.env.NEXT_PUBLIC_STRAPI_URL + photo.image[0].url}
               alt={photo.title || 'Photo'}
               fill={false}
               width={600}

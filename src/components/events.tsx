@@ -48,7 +48,7 @@ export function EventsSection() {
   useEffect(() => {
     async function fetchMyEvents() {
       try {
-        const response = await fetch("http://127.0.0.1:1337/api/events");
+        const response = await fetch((process.env.NEXT_PUBLIC_STRAPI_URL as string) + "/api/events");
         const data = await response.json();
         const adjustedData = data.data.map((event: Event) => ({
           id: event.id,

@@ -61,7 +61,7 @@ export default function EventsPage() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const response = await fetch("http://127.0.0.1:1337/api/events");
+        const response = await fetch((process.env.NEXT_PUBLIC_STRAPI_URL as string) + "/api/events");
         const data = await response.json();
         const adjustedData: Event[] = data.data.map(
           (event: {
@@ -195,7 +195,7 @@ export default function EventsPage() {
                 <ul className="space-y-4">
                   {monthlyEvents.map((event) => (
                     <li key={event.id} className="text-left">
-                      <div className="flex gap-1 items-center text-decoration-line: underline">
+                      <div className="flex gap-1 items-center text-lg text-decoration-line: underline">
                         <ReactCal className="w-5 h-6"></ReactCal>
                         <strong>{event.title}</strong>
                       </div>

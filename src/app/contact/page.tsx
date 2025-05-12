@@ -88,6 +88,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="Your name"
                       required
+                      minLength={5}
                     />
                   </div>
                   <div className="space-y-2">
@@ -134,6 +135,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="Your message"
                       required
+                      minLength={10}
                       className="min-h-[190px] border-2 border-black-600 border-[#d1cdba]"
                     />
                   </div>
@@ -146,7 +148,7 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold">Church Information</h2>
                   <p className="text-gray-500">
-                    Visit us during service times or contact us using the
+                    Visit us during service or contact us using the
                     information below.
                   </p>
                 </div>
