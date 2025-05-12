@@ -29,7 +29,7 @@ export const sendEmail = async (values: Values) => {
             return false; // Indicate failure
         }
     } catch (error) {
-        toast.error('There was a problem sending the email. Please try emailing us directly at: pastor@greatredeemerchurch.org')
+        toast.error('There was a problem sending the email. Please email us directly at: pastor@greatredeemerchurch.org')
         console.error('There was a problem sending the email:', error);
         return false; // Indicate failure
     }
