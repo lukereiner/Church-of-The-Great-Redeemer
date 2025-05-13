@@ -1,8 +1,8 @@
 "use client";
 
-import type React from "react";
+// import type React from "react";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { Clock, Mail, MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,9 @@ import { SiteFooter } from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
 
 import { sendEmail } from "../api/emails/sendEmail";
+import { Turnstile } from "@marsidev/react-turnstile";
+
+import { toast } from "sonner";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -25,17 +28,21 @@ export default function ContactPage() {
     message: "",
   });
 
+  const formRef = React.useRef<HTMLFormElement>(null);
+
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+/*   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const emailSent = await sendEmail({ ...formData, formType: 'contact' });
+    const emailSent = await sendEmail({ ...formData, formType: "contact" });
 
     if (emailSent) {
       // Reset form fields
@@ -46,7 +53,42 @@ export default function ContactPage() {
         message: "",
       });
     }
+  }; */
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const turnstileData = new FormData(formRef.current!)
+    const token = turnstileData.get('cf-turnstile-response')
+
+    const res = await fetch('/api/verify', {
+      method: 'POST',
+      body: JSON.stringify({ token }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+
+    const data = await res.json()
+    if (data.success) {
+      // the token has been validated
+      console.log('token has been validated')
+
+      const emailSent = await sendEmail({ ...formData, formType: "contact" });
+
+      if (emailSent) {
+        // Reset form fields
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      }
+    } else {
+      toast('you are a bot')
+    }
   };
+      
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -60,8 +102,8 @@ export default function ContactPage() {
                   Contact Us
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-                  We&apos;d love to hear from you. Reach out with any questions or
-                  prayer requests.
+                  We&apos;d love to hear from you. Reach out with any questions
+                  or prayer requests.
                 </p>
               </div>
               <div className="w-full max-w-3xl">
@@ -77,7 +119,11 @@ export default function ContactPage() {
                     possible.
                   </p>
                 </div>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-4"
+                  ref={formRef}
+                >
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input
@@ -104,7 +150,7 @@ export default function ContactPage() {
                       required
                     />
                   </div>
-                  <input type="hidden" name="formType" value="contact"/>
+                  <input type="hidden" name="formType" value="contact" />
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
                     <select
@@ -139,6 +185,7 @@ export default function ContactPage() {
                       className="min-h-[190px] border-2 border-black-600 border-[#d1cdba]"
                     />
                   </div>
+                  <Turnstile siteKey={(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string)}/>
                   <Button type="submit" className="w-full">
                     Send Message
                   </Button>
@@ -148,8 +195,8 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold">Church Information</h2>
                   <p className="text-gray-500">
-                    Visit us during service or contact us using the
-                    information below.
+                    Visit us during service or contact us using the information
+                    below.
                   </p>
                 </div>
                 <div className="grid gap-4">

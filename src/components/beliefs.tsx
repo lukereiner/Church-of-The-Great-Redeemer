@@ -31,7 +31,7 @@ export function BeliefsSection() {
     {
       title: "Social Issues",
       icon: <Users className="h-10 w-10 text-slate-700" />,
-      description: "Culture changes, social norms change. God's Word doesn't.",
+      description: "Culture changes, social norms change. God's Word does not change.",
       link: "/beliefs/social-issues",
     },
   ]

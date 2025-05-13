@@ -44,7 +44,7 @@ export default function AboutPage() {
                 </h2>
                 <p className="text-gray-500">
                   The Church of The Great Redeemer (CGR) originated from a group
-                  of Christians who, following the 2024 UMC General Conference,
+                  of Christians who, at the conclustion of the 2024 UMC General Conference,
                   left the United Methodist denomination due to differences in
                   their faith and mission. CGR seeks to worship God in spirit
                   and truth (John 4:24), abide by His Word, and grow in love and
