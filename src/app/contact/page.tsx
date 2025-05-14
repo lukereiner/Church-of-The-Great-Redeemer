@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
+import { AlertBanner } from "@/components/alertBanner";
 
 // import { sendEmail } from "../api/emails/sendEmail";
 import { Turnstile } from "@marsidev/react-turnstile";
@@ -129,6 +130,7 @@ export default function ContactPage() {
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
       <main className="flex-1">
+        <AlertBanner />
         <section className="w-full py-12 md:py-24 lg:py-32 flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">

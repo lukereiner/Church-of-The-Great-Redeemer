@@ -5,12 +5,14 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
+import { AlertBanner } from "@/components/alertBanner";
 
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
       <main className="flex-1 max-w-7xl">
+        <AlertBanner />
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
             <div className="space-y-4">

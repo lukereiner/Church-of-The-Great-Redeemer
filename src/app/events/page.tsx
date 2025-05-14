@@ -12,6 +12,7 @@ import { Calendar as ReactCal, Clock } from "lucide-react";
 import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
+import { AlertBanner } from "@/components/alertBanner";
 
 interface Event {
   start: string | number | Date;
@@ -158,6 +159,7 @@ export default function EventsPage() {
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
       <main className="flex-1 max-w-6xl">
+        <AlertBanner />
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-8 text-center max-w-6xl">

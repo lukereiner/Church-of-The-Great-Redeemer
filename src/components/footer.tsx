@@ -7,29 +7,34 @@ import { Facebook, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
 
 import { toast } from "sonner";
+import {Turnstile} from "@marsidev/react-turnstile";
 
 export function SiteFooter() {
+  const [formValid, setFormValid] = useState(true);
 
   const handleSubscribeSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const target = event.target as HTMLFormElement;
     const formData = new FormData(target);
     const email = formData.get('email');
-  
-    const response = await fetch('/api/send', {
+    const token = formData.get('cf-turnstile-response');
+
+    const response = await fetch('/api/verifySend', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, formType: 'subscribe' }),
+      body: JSON.stringify({ token, formData: { email, formType: 'subscribe' } }),
     });
-  
+
     if (response.ok) {
-      toast.success("Subscribed successfully!")
+      toast.success("Subscribed successfully!");
     } else {
-      toast.error("Subscription failed")
+      setFormValid(false);
+      toast.error("Subscription failed");
       console.error('Subscription failed');
     }
   };
@@ -122,7 +127,10 @@ export function SiteFooter() {
           <form className="grid gap-2" onSubmit={handleSubscribeSubmit}>
             <Input type="email" name="email" placeholder="Email address" required/>
             <input type="hidden" name="formType" value="subscribe" /> {/* Hidden field for resend differentiation */}
-            <Button type="submit">Subscribe</Button>
+            <Turnstile
+              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string}
+            />
+            <Button type="submit" disabled={!formValid}>Subscribe</Button>
           </form>
         </div>
       </div>

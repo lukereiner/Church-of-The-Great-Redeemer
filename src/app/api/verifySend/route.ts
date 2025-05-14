@@ -29,6 +29,23 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Verification failed' }, { status: 400 });
     }
 
+    if (formData.formType === 'subscribe') {
+      // Send subscription confirmation email
+      const { email } = formData;
+      const sendEmailRes = await resend.emails.send({
+        from: 'subscribe@greatredeemerchurch.org',
+        to: 'lukereiner@greatredeemerchurch.org',
+        subject: 'New Subscriber',
+        html: `<p><strong>${email}</strong> has subscribed to the newsletter.</p>`,
+      });
+
+      if (sendEmailRes) {
+        return NextResponse.json({ message: 'Subscription email sent' }, { status: 200 });
+      } else {
+        return NextResponse.json({ message: 'Failed to send subscription email' }, { status: 500 });
+      }
+    }
+
     // Send email using Resend
     const { name, email, subject, message } = formData;
     const sendEmailRes = await resend.emails.send({
