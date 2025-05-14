@@ -15,7 +15,7 @@ import { SiteHeader } from "@/components/header";
 import { SiteFooter } from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
 
-import { sendEmail } from "../api/emails/sendEmail";
+// import { sendEmail } from "../api/emails/sendEmail";
 import { Turnstile } from "@marsidev/react-turnstile";
 
 import { toast } from "sonner";
@@ -27,6 +27,8 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
+
+  const [formValid, setFormValid] = useState(true);
 
   const formRef = React.useRef<HTMLFormElement>(null);
 
@@ -55,7 +57,7 @@ export default function ContactPage() {
     }
   }; */
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+/*   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const turnstileData = new FormData(formRef.current!)
     const token = turnstileData.get('cf-turnstile-response')
@@ -73,6 +75,8 @@ export default function ContactPage() {
       // the token has been validated
       console.log('token has been validated')
 
+      setFormValid(true);
+
       const emailSent = await sendEmail({ ...formData, formType: "contact" });
 
       if (emailSent) {
@@ -83,9 +87,40 @@ export default function ContactPage() {
           subject: "",
           message: "",
         });
+        setFormValid(false);
       }
     } else {
+      setFormValid(false);
       toast('you are a bot')
+    }
+  }; */
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const turnstileData = new FormData(formRef.current!);
+    const token = turnstileData.get('cf-turnstile-response');
+  
+    const res = await fetch('/api/verifySend', {
+      method: 'POST',
+      body: JSON.stringify({ token, formData }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  
+    const data = await res.json();
+    if (res.ok) {
+      // Email sent successfully
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      toast.success("Email sent! We will respond as soon as we can!");
+    } else {
+      setFormValid(false);
+      toast.error(data.message || 'Verification failed');
     }
   };
       
@@ -186,7 +221,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <Turnstile siteKey={(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string)}/>
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" disabled={!formValid} className="w-full">
                     Send Message
                   </Button>
                 </form>

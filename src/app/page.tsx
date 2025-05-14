@@ -10,12 +10,14 @@ import { WelcomeSection } from "@/components/welcome";
 import { EventsSection } from "@/components/events";
 import { GroupsSection } from "@/components/groups";
 import PhotoCarousel from "@/components/PhotoCarousel";
+import { AlertBanner } from "@/components/alertBanner";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
       <main className="flex-1 max-w-7xl">
+        <AlertBanner />
         <WelcomeSection />
         <section className="w-full bg-[#d1cdba]/15 py-12 md:py-16 lg:py-20">
           <div className="container px-4 md:px-6">
