@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
     const { name, email, subject, message } = formData;
     const sendEmailRes = await resend.emails.send({
       from: 'contact@greatredeemerchurch.org',
-      to: 'pastor@greatredeemerchurch.org',
+      to: 'office@greatredeemerchurch.org',
       subject: subject,
       html: `<div style="max-width: 600px; margin: auto; background-color: white; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border-radius: 4px;">
         <h1 style="color: #333;">From: ${name}</h1>
