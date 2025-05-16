@@ -257,9 +257,9 @@ export default function ContactPage() {
                         <Mail className="mt-1 h-5 w-5 text-slate-700" />
                         <div>
                           <h3 className="font-medium">Email</h3>
-                          <a href="mailto:pastor@greatredeemerchurch.org">
+                          <a href="mailto:office@greatredeemerchurch.org">
                             <p className="text-sm text-gray-500">
-                              pastor@greatredeemerchurch.org
+                              office@greatredeemerchurch.org
                             </p>
                           </a>
                         </div>

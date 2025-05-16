@@ -79,8 +79,8 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-5 w-5 text-slate-700" />
-                  <a href="mailto:pastor@greatredeemerchurch.org">
-                    <span>pastor@greatredeemerchurch.org</span>
+                  <a href="mailto:office@greatredeemerchurch.org">
+                    <span>office@greatredeemerchurch.org</span>
                   </a>
                 </div>
                 <div className="flex items-center gap-2">

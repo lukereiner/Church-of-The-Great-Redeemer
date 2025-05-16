@@ -92,8 +92,8 @@ export function SiteFooter() {
           <address className="grid gap-2 not-italic text-sm text-gray-500">
             <p>464 High Street</p>
             <p>Weatherly, PA 18255</p>
-            <a href="mailto:pastor@greatredeemerchurch.org">
-              <p>pastor@greatredeemerchurch.org</p>
+            <a href="mailto:office@greatredeemerchurch.org">
+              <p>office@greatredeemerchurch.org</p>
             </a>
           </address>
           <div className="flex gap-2">
