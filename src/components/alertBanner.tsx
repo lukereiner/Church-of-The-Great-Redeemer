@@ -41,9 +41,6 @@ export function AlertBanner() {
       targetDate.setHours(23, 59, 59, 0)
       const today = new Date();
 
-      console.log('target: ' + targetDate);
-      console.log('today: ' + today);
-
       if (targetDate >= today) {
         return (
           <div key={index} className="flex items-center justify-center pt-4">
