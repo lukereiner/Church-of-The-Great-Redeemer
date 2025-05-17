@@ -155,6 +155,11 @@ export default function EventsPage() {
     );
   };
 
+  const today = new Date();
+  const eventFilter = monthlyEvents.filter((event) => 
+    moment(event.start).isSameOrAfter(today)
+  );
+
   return (
     <div className="flex min-h-screen flex-col items-center">
       <SiteHeader />
@@ -195,7 +200,7 @@ export default function EventsPage() {
                   What&apos;s happening in {currentMonthName}
                 </h2>
                 <ul className="space-y-4">
-                  {monthlyEvents.map((event) => (
+                  {eventFilter.map((event) => (
                     <li key={event.id} className="text-left">
                       <div className="flex gap-1 items-center text-lg text-decoration-line: underline">
                         <ReactCal className="w-5 h-6"></ReactCal>

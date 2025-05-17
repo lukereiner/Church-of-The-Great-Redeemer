@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -43,13 +43,13 @@ const PhotoCarousel: React.FC = () => {
       >
         {photos.map((photo) => (
           <div key={photo.id}>
-            <Image
+            <img
               src={process.env.NEXT_PUBLIC_STRAPI_URL + photo.image[0].url}
               alt={photo.title || 'Photo'}
-              fill={false}
+              // fill={false}
               width={600}
               height={800}
-              quality={100}
+              // quality={100}
               style={{borderRadius: '8px'}}
             />
           </div>

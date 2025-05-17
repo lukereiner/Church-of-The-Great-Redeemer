@@ -29,11 +29,13 @@
     }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/app/api/turnstile.js"  ],
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "src/app/api/turnstile.js",
+    "azure_build/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig = {
   // output: 'standalone', -- for docker use, uncomment
+  distDir: 'azure_build',
   images: {
     remotePatterns: [
       {
@@ -10,6 +11,11 @@ const nextConfig = {
         port: "1337",
         pathname: "/**",
       },
+	{
+        protocol: "https",
+        hostname: "content.greatredeerchurch.org",
+      },
+
     ],
   },
 };
